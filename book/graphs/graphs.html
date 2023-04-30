@@ -444,7 +444,12 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(A \subset B\)</span> A is a subset of B.</p>
 <p><span class="math notranslate nohighlight">\(J = \{\}\)</span> J is an empty set or null set.</p>
 <p>A set can never have redundant elements. A set can be denoted as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -479,8 +484,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty graph object</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -501,14 +512,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/46daaf7fde0c91966f2a72f59279d7c491a4ba0044d308086dab25dbed67790f.png" src="../../_images/46daaf7fde0c91966f2a72f59279d7c491a4ba0044d308086dab25dbed67790f.png" />
+<img alt="../../_images/636141a5832d41014a7367683d8f0195966cf256bf9bbb3983c94ebd948b24c1.png" src="../../_images/636141a5832d41014a7367683d8f0195966cf256bf9bbb3983c94ebd948b24c1.png" />
 </div>
 </div>
 <p>Vertices joined to themselves are called loops and multiple edges to the same pair of vertices are called skeins. Considering them would result in a class of graphs called <strong>multigraph</strong> (skeins and no loops) and <strong>pseudograph</strong> (allowing both).</p>
 <section id="multigraph">
 <h2><span class="section-number">1.1. </span>Multigraph<a class="headerlink" href="#multigraph" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span> <span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -530,14 +547,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/50926636f1a45b5942c1ff0b79471542b17111d50da5fc317b5a4fcea0e27453.png" src="../../_images/50926636f1a45b5942c1ff0b79471542b17111d50da5fc317b5a4fcea0e27453.png" />
+<img alt="../../_images/c859eda3f89accf7cce415e3584a520797343cacac8bd29aa9038ecf8a40ed6b.png" src="../../_images/c859eda3f89accf7cce415e3584a520797343cacac8bd29aa9038ecf8a40ed6b.png" />
 </div>
 </div>
 </section>
 <section id="pseudoraph">
 <h2><span class="section-number">1.2. </span>Pseudoraph<a class="headerlink" href="#pseudoraph" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pseudograph object</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
@@ -565,13 +588,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/930bc53eca12f072875d29bf9ed64cf27d28076c987129a974d1d236e26c5ac6.png" src="../../_images/930bc53eca12f072875d29bf9ed64cf27d28076c987129a974d1d236e26c5ac6.png" />
+<img alt="../../_images/025d31e653bdf8e04928e79c614a53f4fcbf80f2ebba77e1dbbce941818a8307.png" src="../../_images/025d31e653bdf8e04928e79c614a53f4fcbf80f2ebba77e1dbbce941818a8307.png" />
 </div>
 </div>
 <p>When the edges are directed, its called <strong>digraph</strong>.</p>
 <p>When there are no edges or set <span class="math notranslate nohighlight">\(e = \{\}\)</span> then it is called a <strong>null graph</strong>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty graph object</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -589,12 +618,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/7a3d6d02837b9b9106869846178a983d81776e8debadb19aa7803466e2d883e6.png" src="../../_images/7a3d6d02837b9b9106869846178a983d81776e8debadb19aa7803466e2d883e6.png" />
+<img alt="../../_images/26ee1e37eed379f146c16ddb49f5484bdadd86daeb8008eff5bb11f0fc431af4.png" src="../../_images/26ee1e37eed379f146c16ddb49f5484bdadd86daeb8008eff5bb11f0fc431af4.png" />
 </div>
 </div>
 <p>When the graph has all possible edges, it is called as <strong>complete graph</strong>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -602,15 +637,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complete graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/87715e4a3d9113ca5afdd108cccca06cd44cb8ea27d46874176400c3db47ee8c.png" src="../../_images/87715e4a3d9113ca5afdd108cccca06cd44cb8ea27d46874176400c3db47ee8c.png" />
+<img alt="../../_images/628cec0e36503a93d2e40a9bb0b8880b3b0f04df1d8cbe234b183b7b1a472abd.png" src="../../_images/628cec0e36503a93d2e40a9bb0b8880b3b0f04df1d8cbe234b183b7b1a472abd.png" />
 </div>
 </div>
 <p>The <strong>utility graph</strong>, is the graph having vertex set <span class="math notranslate nohighlight">\(\{A, B, C, X, Y, Z\}\)</span> and edge set <span class="math notranslate nohighlight">\(\{\{A, X\}, \{A, Y\}, \{A, Z\}, \{B, X\}, \{B, Y\}, \{B, Z\} \{C, X\}, \{C, Y\}, \{C, Z\}\}\)</span></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty graph object</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -641,12 +682,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" src="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" />
 </div>
 </div>
 <p>The <strong>complement</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> is <span class="math notranslate nohighlight">\(\overline{G}\)</span> that has the edge set that are not present in the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G_hat</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G_hat</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -654,16 +701,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complement of graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3c72dfae4bddfab773581616126180a733211431dccc72824a273460f93ba78a.png" src="../../_images/3c72dfae4bddfab773581616126180a733211431dccc72824a273460f93ba78a.png" />
+<img alt="../../_images/6eb3d437350ee974827c57330cf804f5a9c03a2585434065683901897466109a.png" src="../../_images/6eb3d437350ee974827c57330cf804f5a9c03a2585434065683901897466109a.png" />
 </div>
 </div>
 <p><strong>Null graphs</strong> and <strong>complete graphs</strong> are complementary. That is, for every positive integer <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(\overline{N_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(K_{v}\)</span> and <span class="math notranslate nohighlight">\(\overline{K_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(N_{v}\)</span>.</p>
 <p>A graph <span class="math notranslate nohighlight">\(H\)</span> is a <strong>subgraph</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> if the vertex set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the vertex set of <span class="math notranslate nohighlight">\(G\)</span> and the edge set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -690,8 +743,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/3d7b31602028f841cacf7622c942124669dc6ccd64d53fc85d83e7de541a8af3.png" src="../../_images/3d7b31602028f841cacf7622c942124669dc6ccd64d53fc85d83e7de541a8af3.png" />
+<img alt="../../_images/2d1dcf5b7c91b9c6915551bece8190a2a558d1ff1ce4fa88aeb56859ce8ad871.png" src="../../_images/2d1dcf5b7c91b9c6915551bece8190a2a558d1ff1ce4fa88aeb56859ce8ad871.png" />
 </div>
 </div>
 <p>Two graphs are said to be <strong>isomorphic</strong> if there exists between their vertex sets a one-to-one correspondence having the property that whenever two vertices are adjacent in either graph, the corresponding two vertices are adjacent in the other graph. Such a one-to-one correspondence is called an <strong>isomorphism</strong> (from Greek roots meaning <em>“same structure”</em>). If <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> are isomorphic graphs we denote this by writing “<span class="math notranslate nohighlight">\(G\)</span> ≅ <span class="math notranslate nohighlight">\(H\)</span>”.</p>
@@ -703,7 +757,12 @@ document.write(`
 <li><p>The distribution of degrees.</p></li>
 <li><p>The number of pieces in it.</p></li>
 </ol>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx.algorithms.isomorphism</span> <span class="k">as</span> <span class="nn">iso</span>
 
@@ -736,8 +795,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/192c0fb9856a6a6e257bfb4a894bb8dc7e7b86da4bfdabc328e7190964e3f7ff.png" src="../../_images/192c0fb9856a6a6e257bfb4a894bb8dc7e7b86da4bfdabc328e7190964e3f7ff.png" />
+<img alt="../../_images/f54785681982043ea5bc6608addb30e268646b40aa96f1c891196828f6904d93.png" src="../../_images/f54785681982043ea5bc6608addb30e268646b40aa96f1c891196828f6904d93.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
