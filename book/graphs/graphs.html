@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Graphs &#8212; Devabook</title>
+    <title>3. Graphs &#8212; Devabook</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Content with notebooks" href="../notebooks.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../../index.html" />
+    <link rel="next" title="4. Linear Algebra" href="../deep_learning/linear_algebra.html" />
+    <link rel="prev" title="2. Time series" href="../timeseries/ts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,13 +152,21 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Graphs</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">2. Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning/ml.html">1. Machine Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/ts.html">2. Time series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Graphs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/linear_algebra.html">4. Linear Algebra</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -422,15 +430,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">1.1. Multigraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">1.2. Pseudoraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">1.3. Null graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">1.4. Complete graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">1.5. Utility graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">1.6. Complement of a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">1.7. Subgraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">1.8. Isomorphic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">1.9. Planar graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.1. Multigraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.2. Pseudoraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.3. Null graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.4. Complete graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.5. Utility graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.6. Complement of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.7. Subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.8. Isomorphic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.9. Planar graph</a></li>
 </ul>
             </nav>
         </div>
@@ -443,7 +451,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="graphs">
-<h1><span class="section-number">1. </span>Graphs<a class="headerlink" href="#graphs" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Graphs<a class="headerlink" href="#graphs" title="Permalink to this heading">#</a></h1>
 <p>A <strong>graph</strong> is an object consisting of two sets called its vertex set and its edge set. The vertex set is a finite nonempty set. The edge set may be empty, but otherwise its elements are two-element subsets of the vertex set.</p>
 <p><strong>Set</strong>: A set is a collection of distinct objects, none of which is the set itself.</p>
 <p><span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span></p>
@@ -521,11 +529,11 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6e9fc0f2726ff1390f2d6e94a435059dd546fb4fe0dee8846d94fb7b292379de.png" src="../../_images/6e9fc0f2726ff1390f2d6e94a435059dd546fb4fe0dee8846d94fb7b292379de.png" />
+<img alt="../../_images/77fe1b0149a9680c0059ec1f666d138cadca757ae76937c83052142d9f303e49.png" src="../../_images/77fe1b0149a9680c0059ec1f666d138cadca757ae76937c83052142d9f303e49.png" />
 </div>
 </div>
 <section id="multigraph">
-<h2><span class="section-number">1.1. </span>Multigraph<a class="headerlink" href="#multigraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Multigraph<a class="headerlink" href="#multigraph" title="Permalink to this heading">#</a></h2>
 <p>Vertices joined to themselves are called loops and multiple edges to the same pair of vertices are called skeins. Considering them would result in a class of graphs called <strong>multigraph</strong> (skeins and no loops) and <strong>pseudograph</strong> (allowing both).</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -556,12 +564,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/14fa216696a912d9ff91a6ce4fe1b978504fb42b31fccc49a36f205955988275.png" src="../../_images/14fa216696a912d9ff91a6ce4fe1b978504fb42b31fccc49a36f205955988275.png" />
+<img alt="../../_images/879aaace6023a6b49b38f8992e8bdd9a3358c6f9505fd6882588f23cb702d9c7.png" src="../../_images/879aaace6023a6b49b38f8992e8bdd9a3358c6f9505fd6882588f23cb702d9c7.png" />
 </div>
 </div>
 </section>
 <section id="pseudoraph">
-<h2><span class="section-number">1.2. </span>Pseudoraph<a class="headerlink" href="#pseudoraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Pseudoraph<a class="headerlink" href="#pseudoraph" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -597,12 +605,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/756883fa6633e3d2bc26df253978d158289b5b56b9d26f6f75f4efce4499945d.png" src="../../_images/756883fa6633e3d2bc26df253978d158289b5b56b9d26f6f75f4efce4499945d.png" />
+<img alt="../../_images/fa62f8b303cbf713a2c28284a948e4e5dd01f122391168da1dac1ff39e0773e2.png" src="../../_images/fa62f8b303cbf713a2c28284a948e4e5dd01f122391168da1dac1ff39e0773e2.png" />
 </div>
 </div>
 </section>
 <section id="null-graph">
-<h2><span class="section-number">1.3. </span>Null graph<a class="headerlink" href="#null-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Null graph<a class="headerlink" href="#null-graph" title="Permalink to this heading">#</a></h2>
 <p>When the edges are directed, its called <strong>digraph</strong>.</p>
 <p>When there are no edges or set <span class="math notranslate nohighlight">\(e = \{\}\)</span> then it is called a <strong>null graph</strong>.</p>
 <div class="cell tag_hide-input docutils container">
@@ -630,12 +638,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6315508758cd700442adbc8493660dc17928c6fa4167ed763fd1685e06424b0d.png" src="../../_images/6315508758cd700442adbc8493660dc17928c6fa4167ed763fd1685e06424b0d.png" />
+<img alt="../../_images/4cd9cc6433ea195e0119c03c3a5db7cecc328d62d861bfa20d3f13423fbf4998.png" src="../../_images/4cd9cc6433ea195e0119c03c3a5db7cecc328d62d861bfa20d3f13423fbf4998.png" />
 </div>
 </div>
 </section>
 <section id="complete-graph">
-<h2><span class="section-number">1.4. </span>Complete graph<a class="headerlink" href="#complete-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Complete graph<a class="headerlink" href="#complete-graph" title="Permalink to this heading">#</a></h2>
 <p>When the graph has all possible edges, it is called as <strong>complete graph</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -655,12 +663,12 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complete graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/0889737b589ea5ea73067e5516bc161fbe4f8c20548b9871b7b0976a80dfa3d5.png" src="../../_images/0889737b589ea5ea73067e5516bc161fbe4f8c20548b9871b7b0976a80dfa3d5.png" />
+<img alt="../../_images/241b5b0d792d58bbd97aa8d674333db6be78c546dd9e6a1385bc15c12bacbc79.png" src="../../_images/241b5b0d792d58bbd97aa8d674333db6be78c546dd9e6a1385bc15c12bacbc79.png" />
 </div>
 </div>
 </section>
 <section id="utility-graph">
-<h2><span class="section-number">1.5. </span>Utility graph<a class="headerlink" href="#utility-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Utility graph<a class="headerlink" href="#utility-graph" title="Permalink to this heading">#</a></h2>
 <p>The <strong>utility graph</strong>, is the graph having vertex set <span class="math notranslate nohighlight">\(\{A, B, C, X, Y, Z\}\)</span> and edge set <span class="math notranslate nohighlight">\(\{\{A, X\}, \{A, Y\}, \{A, Z\}, \{B, X\}, \{B, Y\}, \{B, Z\} \{C, X\}, \{C, Y\}, \{C, Z\}\}\)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -705,7 +713,7 @@ document.write(`
 </div>
 </section>
 <section id="complement-of-a-graph">
-<h2><span class="section-number">1.6. </span>Complement of a graph<a class="headerlink" href="#complement-of-a-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Complement of a graph<a class="headerlink" href="#complement-of-a-graph" title="Permalink to this heading">#</a></h2>
 <p>The <strong>complement</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> is <span class="math notranslate nohighlight">\(\overline{G}\)</span> that has the edge set that are not present in the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -725,13 +733,13 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complement of graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/5caa4673fbc26c8d393c8570af896b7645b5d88a7550653fece59920a78a061a.png" src="../../_images/5caa4673fbc26c8d393c8570af896b7645b5d88a7550653fece59920a78a061a.png" />
+<img alt="../../_images/58e293db6755079e7666361729170c471c23b22607268c51ac4199fe441749da.png" src="../../_images/58e293db6755079e7666361729170c471c23b22607268c51ac4199fe441749da.png" />
 </div>
 </div>
 <p><strong>Null graphs</strong> and <strong>complete graphs</strong> are complementary. That is, for every positive integer <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(\overline{N_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(K_{v}\)</span> and <span class="math notranslate nohighlight">\(\overline{K_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(N_{v}\)</span>.</p>
 </section>
 <section id="subgraph">
-<h2><span class="section-number">1.7. </span>Subgraph<a class="headerlink" href="#subgraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Subgraph<a class="headerlink" href="#subgraph" title="Permalink to this heading">#</a></h2>
 <p>A graph <span class="math notranslate nohighlight">\(H\)</span> is a <strong>subgraph</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> if the vertex set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the vertex set of <span class="math notranslate nohighlight">\(G\)</span> and the edge set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -764,12 +772,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f27ecdeb0ecdeecef46be9df948054dbec647986f3375f7fb9ae15390a599fe0.png" src="../../_images/f27ecdeb0ecdeecef46be9df948054dbec647986f3375f7fb9ae15390a599fe0.png" />
+<img alt="../../_images/ec17e8461a3de19dc5e854b36de5cb1c43080e1018d1aed9e578ea7b298028ca.png" src="../../_images/ec17e8461a3de19dc5e854b36de5cb1c43080e1018d1aed9e578ea7b298028ca.png" />
 </div>
 </div>
 </section>
 <section id="isomorphic-graphs">
-<h2><span class="section-number">1.8. </span>Isomorphic graphs<a class="headerlink" href="#isomorphic-graphs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Isomorphic graphs<a class="headerlink" href="#isomorphic-graphs" title="Permalink to this heading">#</a></h2>
 <p>Two graphs are said to be <strong>isomorphic</strong> if there exists between their vertex sets a one-to-one correspondence having the property that whenever two vertices are adjacent in either graph, the corresponding two vertices are adjacent in the other graph. Such a one-to-one correspondence is called an <strong>isomorphism</strong> (from Greek roots meaning <em>“same structure”</em>). If <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> are isomorphic graphs we denote this by writing “<span class="math notranslate nohighlight">\(G\)</span> ≅ <span class="math notranslate nohighlight">\(H\)</span>”.</p>
 <p>The <strong>degree</strong> of a vertex is the number of incidents to it.</p>
 <p>Properties preserved by isomorphism:</p>
@@ -819,7 +827,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f8aa199cb48281fbabb24f30249582b03c8a2eaa0512312de02bafd633ffe999.png" src="../../_images/f8aa199cb48281fbabb24f30249582b03c8a2eaa0512312de02bafd633ffe999.png" />
+<img alt="../../_images/2ce86317ea2fb111ec9602ba5ced041166859f203424e26a18f2d07ae80293a6.png" src="../../_images/2ce86317ea2fb111ec9602ba5ced041166859f203424e26a18f2d07ae80293a6.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -827,7 +835,7 @@ document.write(`
 </div>
 </section>
 <section id="planar-graph">
-<h2><span class="section-number">1.9. </span>Planar graph<a class="headerlink" href="#planar-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.9. </span>Planar graph<a class="headerlink" href="#planar-graph" title="Permalink to this heading">#</a></h2>
 <p>A graph is <strong>planar</strong> if it is isomorphic to a graph that has been drawn in a plane without edge-crossings. Otherwise a graph is <strong>nonplanar</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -873,6 +881,7 @@ document.write(`
 <li><p>Any subgraph of a planar graph is planar.</p></li>
 <li><p>If a graph <span class="math notranslate nohighlight">\(H\)</span> is a subgraph of a graph <span class="math notranslate nohighlight">\(G\)</span>, we will also say that G is a <strong>supergraph</strong> of H.</p></li>
 </ol>
+<p>If some new vertices of degree 2 are added to some of the edges of a graph <span class="math notranslate nohighlight">\(G\)</span>, the resulting graph <span class="math notranslate nohighlight">\(H\)</span> is called an <strong>expansion</strong> of <span class="math notranslate nohighlight">\(G\)</span>.</p>
 </section>
 </section>
 
@@ -908,20 +917,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../index.html"
+       href="../timeseries/ts.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Time series</p>
       </div>
     </a>
     <a class="right-next"
-       href="../notebooks.html"
+       href="../deep_learning/linear_algebra.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Content with notebooks</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Linear Algebra</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -943,15 +952,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">1.1. Multigraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">1.2. Pseudoraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">1.3. Null graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">1.4. Complete graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">1.5. Utility graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">1.6. Complement of a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">1.7. Subgraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">1.8. Isomorphic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">1.9. Planar graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.1. Multigraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.2. Pseudoraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.3. Null graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.4. Complete graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.5. Utility graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.6. Complement of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.7. Subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.8. Isomorphic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.9. Planar graph</a></li>
 </ul>
   </nav></div>
 
