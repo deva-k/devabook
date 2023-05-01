@@ -11,11 +11,19 @@ root: index
 # Or you organize the TOC by parts
 
 parts:
+  - caption: Machine Learning
+    numbered: true
+    chapters:
+      - file: book/graphs/graphs
+  - caption: Time series
+    numbered: true
+    chapters:
+      - file: book/notebooks
   - caption: Graphs
     numbered: true
     chapters:
       - file: book/graphs/graphs
-  - caption: Notebooks
+  - caption: Deep Learning
     numbered: true
     chapters:
       - file: book/notebooks
