@@ -14,11 +14,11 @@ parts:
   - caption: Machine Learning
     numbered: true
     chapters:
-      - file: book/graphs/graphs
+      - file: book/machine_learning/ml
   - caption: Time series
     numbered: true
     chapters:
-      - file: book/notebooks
+      - file: book/timeseries/ts
   - caption: Graphs
     numbered: true
     chapters:
@@ -26,7 +26,7 @@ parts:
   - caption: Deep Learning
     numbered: true
     chapters:
-      - file: book/notebooks
+      - file: book/deep_learning/linear_algebra
   - caption: Appendices
     chapters:
       - file: book/bibliography
