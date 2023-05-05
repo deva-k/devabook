@@ -430,22 +430,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.1. Multigraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.2. Pseudoraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.3. Null graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.4. Complete graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.5. Utility graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.6. Complement of a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.7. Subgraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.8. Isomorphic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.9. Planar graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-formula">3.10. Euler’s formula</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#faces-of-a-graph">3.10.1. Faces of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">3.1. Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.2. Multigraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.3. Pseudoraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digraph">3.4. Digraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.5. Null graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.6. Complete graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.7. Utility graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.8. Complement of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.9. Subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.10. Isomorphic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.11. Planar graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jordan-curve-theorem">3.12. Jordan curve theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kuratowski-s-theorem">3.13. Kuratowski’s theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-formula">3.14. Euler’s formula</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#faces-of-a-graph">3.14.1. Faces of a graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.14.2. Euler’s formula</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platonic-graphs">3.11. Platonic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.12. Euler walk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.13. Hamilton walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3.15. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-graphs">3.16. Regular graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platonic-graphs">3.17. Platonic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-graph">3.18. Dual graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.19. Euler walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.20. Hamilton walk</a></li>
 </ul>
             </nav>
         </div>
@@ -459,6 +467,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="graphs">
 <h1><span class="section-number">3. </span>Graphs<a class="headerlink" href="#graphs" title="Permalink to this heading">#</a></h1>
+<section id="graph">
+<h2><span class="section-number">3.1. </span>Graph<a class="headerlink" href="#graph" title="Permalink to this heading">#</a></h2>
 <p>A <strong>graph</strong> is an object consisting of two sets called its vertex set and its edge set. The vertex set is a finite nonempty set. The edge set may be empty, but otherwise its elements are two-element subsets of the vertex set.</p>
 <p><strong>Set</strong>: A set is a collection of distinct objects, none of which is the set itself.</p>
 <p><span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span></p>
@@ -536,11 +546,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f81f4412c81b61c430e15960ef1f875bbe4a5428df3c8115967ca7ecc0c1a1d3.png" src="../../_images/f81f4412c81b61c430e15960ef1f875bbe4a5428df3c8115967ca7ecc0c1a1d3.png" />
+<img alt="../../_images/4d4d7925db9920b3b8642af658d66f8f122b1e50e79ef39485843f3dddae0d35.png" src="../../_images/4d4d7925db9920b3b8642af658d66f8f122b1e50e79ef39485843f3dddae0d35.png" />
 </div>
 </div>
+</section>
 <section id="multigraph">
-<h2><span class="section-number">3.1. </span>Multigraph<a class="headerlink" href="#multigraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Multigraph<a class="headerlink" href="#multigraph" title="Permalink to this heading">#</a></h2>
 <p>Vertices joined to themselves are called loops and multiple edges to the same pair of vertices are called skeins. Considering them would result in a class of graphs called <strong>multigraph</strong> (skeins and no loops) and <strong>pseudograph</strong> (allowing both).</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -571,12 +582,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c642284a26bc7efbfd873962058316d1f048598302052a8e3884426cb7a174c6.png" src="../../_images/c642284a26bc7efbfd873962058316d1f048598302052a8e3884426cb7a174c6.png" />
+<img alt="../../_images/b3f8db19df3a092375ac8f0e1d248d560b27842f008585ad354c16fbf3b3808b.png" src="../../_images/b3f8db19df3a092375ac8f0e1d248d560b27842f008585ad354c16fbf3b3808b.png" />
 </div>
 </div>
 </section>
 <section id="pseudoraph">
-<h2><span class="section-number">3.2. </span>Pseudoraph<a class="headerlink" href="#pseudoraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Pseudoraph<a class="headerlink" href="#pseudoraph" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -612,13 +623,16 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a745a68937d267e4bdbefaa825065562266f8dd0c86455d1b7a692cc5dd6042e.png" src="../../_images/a745a68937d267e4bdbefaa825065562266f8dd0c86455d1b7a692cc5dd6042e.png" />
+<img alt="../../_images/5fa5a468335b74465616f626b781bd169e21410048190ff993b1a10faff2dbc3.png" src="../../_images/5fa5a468335b74465616f626b781bd169e21410048190ff993b1a10faff2dbc3.png" />
 </div>
 </div>
 </section>
-<section id="null-graph">
-<h2><span class="section-number">3.3. </span>Null graph<a class="headerlink" href="#null-graph" title="Permalink to this heading">#</a></h2>
+<section id="digraph">
+<h2><span class="section-number">3.4. </span>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h2>
 <p>When the edges are directed, its called <strong>digraph</strong>.</p>
+</section>
+<section id="null-graph">
+<h2><span class="section-number">3.5. </span>Null graph<a class="headerlink" href="#null-graph" title="Permalink to this heading">#</a></h2>
 <p>When there are no edges or set <span class="math notranslate nohighlight">\(e = \{\}\)</span> then it is called a <strong>null graph</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -645,12 +659,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/289ff13cdbfe56bbb2b200a8ee01adb980f7cd3438962c592d4a875dc1ac3513.png" src="../../_images/289ff13cdbfe56bbb2b200a8ee01adb980f7cd3438962c592d4a875dc1ac3513.png" />
+<img alt="../../_images/c3af8a45e015a76245d7ccc31a3af66e396916b448062c09f9eb85fc62ec5eb0.png" src="../../_images/c3af8a45e015a76245d7ccc31a3af66e396916b448062c09f9eb85fc62ec5eb0.png" />
 </div>
 </div>
 </section>
 <section id="complete-graph">
-<h2><span class="section-number">3.4. </span>Complete graph<a class="headerlink" href="#complete-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Complete graph<a class="headerlink" href="#complete-graph" title="Permalink to this heading">#</a></h2>
 <p>When the graph has all possible edges, it is called as <strong>complete graph</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -670,12 +684,12 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complete graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/773bb8973f33c4f2b66eb12e6f9197747ce8365b8b4ab042a707eb338cda60be.png" src="../../_images/773bb8973f33c4f2b66eb12e6f9197747ce8365b8b4ab042a707eb338cda60be.png" />
+<img alt="../../_images/e8fa688bda7b90907164dfeefd33c76b75c184bac1a42debbe066fb56e4105b0.png" src="../../_images/e8fa688bda7b90907164dfeefd33c76b75c184bac1a42debbe066fb56e4105b0.png" />
 </div>
 </div>
 </section>
 <section id="utility-graph">
-<h2><span class="section-number">3.5. </span>Utility graph<a class="headerlink" href="#utility-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Utility graph<a class="headerlink" href="#utility-graph" title="Permalink to this heading">#</a></h2>
 <p>The <strong>utility graph</strong>, is the graph having vertex set <span class="math notranslate nohighlight">\(\{A, B, C, X, Y, Z\}\)</span> and edge set <span class="math notranslate nohighlight">\(\{\{A, X\}, \{A, Y\}, \{A, Z\}, \{B, X\}, \{B, Y\}, \{B, Z\} \{C, X\}, \{C, Y\}, \{C, Z\}\}\)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -720,7 +734,7 @@ document.write(`
 </div>
 </section>
 <section id="complement-of-a-graph">
-<h2><span class="section-number">3.6. </span>Complement of a graph<a class="headerlink" href="#complement-of-a-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Complement of a graph<a class="headerlink" href="#complement-of-a-graph" title="Permalink to this heading">#</a></h2>
 <p>The <strong>complement</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> is <span class="math notranslate nohighlight">\(\overline{G}\)</span> that has the edge set that are not present in the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -740,13 +754,13 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complement of graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/b45ce77ee5ed05d55e1a9c613628070ab51cabc95978d11bbb0ab20f3b9eed37.png" src="../../_images/b45ce77ee5ed05d55e1a9c613628070ab51cabc95978d11bbb0ab20f3b9eed37.png" />
+<img alt="../../_images/3317601b391c14b5b6dad5eed41960a5e37639322116697ff9c02a617a559092.png" src="../../_images/3317601b391c14b5b6dad5eed41960a5e37639322116697ff9c02a617a559092.png" />
 </div>
 </div>
 <p><strong>Null graphs</strong> and <strong>complete graphs</strong> are complementary. That is, for every positive integer <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(\overline{N_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(K_{v}\)</span> and <span class="math notranslate nohighlight">\(\overline{K_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(N_{v}\)</span>.</p>
 </section>
 <section id="subgraph">
-<h2><span class="section-number">3.7. </span>Subgraph<a class="headerlink" href="#subgraph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.9. </span>Subgraph<a class="headerlink" href="#subgraph" title="Permalink to this heading">#</a></h2>
 <p>A graph <span class="math notranslate nohighlight">\(H\)</span> is a <strong>subgraph</strong> of a graph <span class="math notranslate nohighlight">\(G\)</span> if the vertex set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the vertex set of <span class="math notranslate nohighlight">\(G\)</span> and the edge set of <span class="math notranslate nohighlight">\(H\)</span> is a subset of the edge set of <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -779,12 +793,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9edb238b5fbb9b6f06fdc8e7ffd67ea7c368a6d33b2354363ff0e2da7f871711.png" src="../../_images/9edb238b5fbb9b6f06fdc8e7ffd67ea7c368a6d33b2354363ff0e2da7f871711.png" />
+<img alt="../../_images/07f67effcc868a04cb33d85142a86c24bd3dbb11c28f23332e92210a94c727ae.png" src="../../_images/07f67effcc868a04cb33d85142a86c24bd3dbb11c28f23332e92210a94c727ae.png" />
 </div>
 </div>
 </section>
 <section id="isomorphic-graphs">
-<h2><span class="section-number">3.8. </span>Isomorphic graphs<a class="headerlink" href="#isomorphic-graphs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.10. </span>Isomorphic graphs<a class="headerlink" href="#isomorphic-graphs" title="Permalink to this heading">#</a></h2>
 <p>Two graphs are said to be <strong>isomorphic</strong> if there exists between their vertex sets a one-to-one correspondence having the property that whenever two vertices are adjacent in either graph, the corresponding two vertices are adjacent in the other graph. Such a one-to-one correspondence is called an <strong>isomorphism</strong> (from Greek roots meaning <em>“same structure”</em>). If <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> are isomorphic graphs we denote this by writing “<span class="math notranslate nohighlight">\(G\)</span> ≅ <span class="math notranslate nohighlight">\(H\)</span>”.</p>
 <p>The <strong>degree</strong> of a vertex is the number of incidents to it.</p>
 <p>Properties preserved by isomorphism:</p>
@@ -834,7 +848,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/dfea1d5d5dec1beb00431fe4ad8f1d0d5de20e263026cf7f0c6e419d3c1a55e6.png" src="../../_images/dfea1d5d5dec1beb00431fe4ad8f1d0d5de20e263026cf7f0c6e419d3c1a55e6.png" />
+<img alt="../../_images/ce965be1c622cd85e6555d7f8f3100342658844736a9de03f75b6c08cebc6b8b.png" src="../../_images/ce965be1c622cd85e6555d7f8f3100342658844736a9de03f75b6c08cebc6b8b.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -842,7 +856,7 @@ document.write(`
 </div>
 </section>
 <section id="planar-graph">
-<h2><span class="section-number">3.9. </span>Planar graph<a class="headerlink" href="#planar-graph" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.11. </span>Planar graph<a class="headerlink" href="#planar-graph" title="Permalink to this heading">#</a></h2>
 <p>A graph is <strong>planar</strong> if it is isomorphic to a graph that has been drawn in a plane without edge-crossings. Otherwise a graph is <strong>nonplanar</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -877,6 +891,9 @@ document.write(`
 <img alt="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" src="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" />
 </div>
 </div>
+</section>
+<section id="jordan-curve-theorem">
+<h2><span class="section-number">3.12. </span>Jordan curve theorem<a class="headerlink" href="#jordan-curve-theorem" title="Permalink to this heading">#</a></h2>
 <p>A <strong>continuous curve</strong> is closed if the starting point and ending point are the same.And a continuous closed curve is <strong>simple</strong> if no point other than the starting point is repeated, and the starting point itself is repeated only once.</p>
 <p>The <strong>Jordan Curve Theorem</strong> says that any such thing embedded in a plane cuts the plane into two regions—the inside and the outside—and that any unbroken curve drawn in the plane from a point inside to a point outside must somewhere cross the rubber band. The corollary says that if two points on the rubber band are joined by an unbroken curve in the plane that doesn’t touch the rubber band anywhere else, then that unbroken curve must be either entirely inside the rubber band or entirely outside it.</p>
 <div class="admonition tip">
@@ -893,6 +910,9 @@ document.write(`
 <li><p>Every expansion of <span class="math notranslate nohighlight">\(UG\)</span> or <span class="math notranslate nohighlight">\(K_5\)</span> is nonplanar.</p></li>
 <li><p>Every supergraph of an expansion of <span class="math notranslate nohighlight">\(UG\)</span> or <span class="math notranslate nohighlight">\(K_5\)</span> is nonplanar.</p></li>
 </ol>
+</section>
+<section id="kuratowski-s-theorem">
+<h2><span class="section-number">3.13. </span>Kuratowski’s theorem<a class="headerlink" href="#kuratowski-s-theorem" title="Permalink to this heading">#</a></h2>
 <p><strong>Kuratowski’s Theorem</strong>: Every nonplanar graph is a supergraph of an expansion of <span class="math notranslate nohighlight">\(UG\)</span> or <span class="math notranslate nohighlight">\(K_5\)</span>.</p>
 <ol class="arabic simple" start="6">
 <li><p>The set of all <strong>nonplanar graphs</strong> is equal to the set of all graphs that are supergraphs of expansions of <span class="math notranslate nohighlight">\(UG\)</span> or <span class="math notranslate nohighlight">\(K_5\)</span>.</p></li>
@@ -900,7 +920,7 @@ document.write(`
 </ol>
 </section>
 <section id="euler-s-formula">
-<h2><span class="section-number">3.10. </span>Euler’s formula<a class="headerlink" href="#euler-s-formula" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.14. </span>Euler’s formula<a class="headerlink" href="#euler-s-formula" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>A walk in a graph is a sequence <span class="math notranslate nohighlight">\(A_1\)</span> <span class="math notranslate nohighlight">\(A_2\)</span> <span class="math notranslate nohighlight">\(A_3\)</span> … An of not necessarily distinct vertices in which <span class="math notranslate nohighlight">\(A_1\)</span> is joined by an edge to <span class="math notranslate nohighlight">\(A_2\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span> is joined by an edge to <span class="math notranslate nohighlight">\(A_3\)</span>, …, and <span class="math notranslate nohighlight">\(A_n\)</span> − 1 is joined by an edge to <span class="math notranslate nohighlight">\(A_n\)</span>. The walk <span class="math notranslate nohighlight">\(A_1\)</span> <span class="math notranslate nohighlight">\(A_2\)</span> <span class="math notranslate nohighlight">\(A_3\)</span> … <span class="math notranslate nohighlight">\(A_n\)</span> is said to join <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_n\)</span>.</p></li>
 <li><p>Any sequence of distinct vertices in <span class="math notranslate nohighlight">\(K_v\)</span> is a walk.</p></li>
@@ -910,7 +930,7 @@ document.write(`
 <li><p>Except for <span class="math notranslate nohighlight">\(N_1\)</span>, all null graphs are disconnected.</p></li>
 </ol>
 <section id="faces-of-a-graph">
-<h3><span class="section-number">3.10.1. </span>Faces of a graph<a class="headerlink" href="#faces-of-a-graph" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.14.1. </span>Faces of a graph<a class="headerlink" href="#faces-of-a-graph" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple" start="7">
 <li><p>When a planar graph is actually drawn in a plane without edge-crossings, it cuts the plane into regions called faces of the graph. The letter <span class="math notranslate nohighlight">\(“f”\)</span> shall denote the number of faces of a planar graph.</p></li>
 </ol>
@@ -954,19 +974,28 @@ document.write(`
 <ol class="arabic simple" start="8">
 <li><p>A graph is <strong>polygonal</strong> if it is planar, connected, and has the property that every edge borders on two different faces.</p></li>
 </ol>
+</section>
+<section id="id1">
+<h3><span class="section-number">3.14.2. </span>Euler’s formula<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p><strong>Euler’s Formula says that for planar connected graphs <span class="math notranslate nohighlight">\(v\)</span> + <span class="math notranslate nohighlight">\(f\)</span> − <span class="math notranslate nohighlight">\(e\)</span> is constant, and the constant is 2</strong></p>
+</section>
+</section>
+<section id="topology">
+<h2><span class="section-number">3.15. </span>Topology<a class="headerlink" href="#topology" title="Permalink to this heading">#</a></h2>
 <p><strong>Topology</strong> is a purely qualitative subject where quantity is banned. In it two figures are always equivalent if it is possible to pass from one to the other by a continuous deformation, whose mathematical law can be of any sort whatsoever as long as continuity is respected.</p>
 </section>
-</section>
-<section id="platonic-graphs">
-<h2><span class="section-number">3.11. </span>Platonic graphs<a class="headerlink" href="#platonic-graphs" title="Permalink to this heading">#</a></h2>
-<p>“A graph is <strong>regular</strong> if all the vertices have the same degree. If the common value of the degrees of a regular graph is the number <span class="math notranslate nohighlight">\(d\)</span>, we say that the graph is regular of degree <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<section id="regular-graphs">
+<h2><span class="section-number">3.16. </span>Regular graphs<a class="headerlink" href="#regular-graphs" title="Permalink to this heading">#</a></h2>
+<p>A graph is <strong>regular</strong> if all the vertices have the same degree. If the common value of the degrees of a regular graph is the number <span class="math notranslate nohighlight">\(d\)</span>, we say that the graph is regular of degree <span class="math notranslate nohighlight">\(d\)</span>.</p>
 <ol class="arabic simple">
 <li><p>Any cyclic graph <span class="math notranslate nohighlight">\(C_v\)</span> is regular of degree 2.</p></li>
 <li><p>Any complete graph <span class="math notranslate nohighlight">\(K_v\)</span> is regular of degree <span class="math notranslate nohighlight">\(v\)</span> − 1.</p></li>
 <li><p>Any null graph <span class="math notranslate nohighlight">\(N_v\)</span> is regular of degree 0.</p></li>
 <li><p><span class="math notranslate nohighlight">\(UG\)</span> is regular of degree 3.</p></li>
 </ol>
+</section>
+<section id="platonic-graphs">
+<h2><span class="section-number">3.17. </span>Platonic graphs<a class="headerlink" href="#platonic-graphs" title="Permalink to this heading">#</a></h2>
 <p>A graph is <strong>platonic</strong> if it is polygonal, regular, and has the additional property that all of its faces are bounded by the same number of edges.
 Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyclic graphs there are only <strong>five</strong> platonic graphs. The five Platonic solids: tetrahedron, cube, octahedron, dodecahedron, and icosahedron.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1012,13 +1041,16 @@ Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyc
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/550b7e2418a17bf01a7b1a9ac315efbc4d38dddc6b22bff762cc02e5798bfba8.png" src="../../_images/550b7e2418a17bf01a7b1a9ac315efbc4d38dddc6b22bff762cc02e5798bfba8.png" />
+<img alt="../../_images/33f6948f84ed8c26d68448640aeb750f4b8ccd6269c09ce884b03397c5146690.png" src="../../_images/33f6948f84ed8c26d68448640aeb750f4b8ccd6269c09ce884b03397c5146690.png" />
 </div>
 </div>
+</section>
+<section id="dual-graph">
+<h2><span class="section-number">3.18. </span>Dual graph<a class="headerlink" href="#dual-graph" title="Permalink to this heading">#</a></h2>
 <p>Select a point within each face of <span class="math notranslate nohighlight">\(G\)</span> and let two such points be connected by a line whenever the corresponding faces of <span class="math notranslate nohighlight">\(G\)</span> share a border. This system of points and lines constitutes a graph, called a <strong>dual graph</strong> of <span class="math notranslate nohighlight">\(G\)</span>, which is always planar and connected.</p>
 </section>
 <section id="euler-walk">
-<h2><span class="section-number">3.12. </span>Euler walk<a class="headerlink" href="#euler-walk" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.19. </span>Euler walk<a class="headerlink" href="#euler-walk" title="Permalink to this heading">#</a></h2>
 <p>A walk <span class="math notranslate nohighlight">\(A_1\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span> … <span class="math notranslate nohighlight">\(A_{n−1}\)</span>, <span class="math notranslate nohighlight">\(A_n\)</span> in a graph is closed if <span class="math notranslate nohighlight">\(A_1\)</span> and <span class="math notranslate nohighlight">\(A_n\)</span> are the same vertex; otherwise the walk is open.</p>
 <p>An <strong>euler walk</strong> is a walk that uses every edge in the graph exactly once.</p>
 <p>If a connected graph has a closed euler walk, then every vertex is even. Conversely, if a graph is connected and every vertex is even (A vertex is “even” if its degree is an even number), then it has a closed euler walk.</p>
@@ -1069,7 +1101,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </section>
 <section id="hamilton-walk">
-<h2><span class="section-number">3.13. </span>Hamilton walk<a class="headerlink" href="#hamilton-walk" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.20. </span>Hamilton walk<a class="headerlink" href="#hamilton-walk" title="Permalink to this heading">#</a></h2>
 <p>An open <strong>hamilton walk</strong> is a walk that uses every vertex in the graph exactly once. A closed hamilton walk is a closed walk that uses the initial vertex exactly twice and all the other vertices in the graph.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1100,7 +1132,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/d628e63dabb91bdffcde8deff19f160b0ba9ea1ec1031c67c389296e23275208.png" src="../../_images/d628e63dabb91bdffcde8deff19f160b0ba9ea1ec1031c67c389296e23275208.png" />
+<img alt="../../_images/0f2c53e6255b56cc0d4de61463dd2b1eb70f8976b2a4301e57eacc5f42a3ebae.png" src="../../_images/0f2c53e6255b56cc0d4de61463dd2b1eb70f8976b2a4301e57eacc5f42a3ebae.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hamiltonian walk:  [[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;D&#39;]]
 </pre></div>
 </div>
@@ -1176,22 +1208,30 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.1. Multigraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.2. Pseudoraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.3. Null graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.4. Complete graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.5. Utility graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.6. Complement of a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.7. Subgraph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.8. Isomorphic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.9. Planar graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-formula">3.10. Euler’s formula</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#faces-of-a-graph">3.10.1. Faces of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph">3.1. Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigraph">3.2. Multigraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudoraph">3.3. Pseudoraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digraph">3.4. Digraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#null-graph">3.5. Null graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-graph">3.6. Complete graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-graph">3.7. Utility graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-of-a-graph">3.8. Complement of a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgraph">3.9. Subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphic-graphs">3.10. Isomorphic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planar-graph">3.11. Planar graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jordan-curve-theorem">3.12. Jordan curve theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kuratowski-s-theorem">3.13. Kuratowski’s theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-formula">3.14. Euler’s formula</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#faces-of-a-graph">3.14.1. Faces of a graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.14.2. Euler’s formula</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platonic-graphs">3.11. Platonic graphs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.12. Euler walk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.13. Hamilton walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology">3.15. Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-graphs">3.16. Regular graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platonic-graphs">3.17. Platonic graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-graph">3.18. Dual graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.19. Euler walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.20. Hamilton walk</a></li>
 </ul>
   </nav></div>
 
