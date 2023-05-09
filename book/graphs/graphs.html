@@ -454,6 +454,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-graph">3.18. Dual graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.19. Euler walk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.20. Hamilton walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-choice">3.21. Modeling choice</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">3.21.1. Adjacency matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx-to-adj-matrix">3.21.2. Networkx to adj matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">3.22. Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centrality">3.23. centrality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-centrality">3.23.1. eigenvector centrality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-rank">3.23.2. page rank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#betweeness-centrality">3.23.3. Betweeness centrality</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -486,6 +498,13 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+<span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">networkplot</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">is_fully_connected</span>
+<span class="kn">from</span> <span class="nn">graspologic.datasets</span> <span class="kn">import</span> <span class="n">load_drosophila_left</span>
+<span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">binarize</span>
 
 <span class="c1"># import network and graph libraries</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -517,6 +536,20 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -546,7 +579,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4d4d7925db9920b3b8642af658d66f8f122b1e50e79ef39485843f3dddae0d35.png" src="../../_images/4d4d7925db9920b3b8642af658d66f8f122b1e50e79ef39485843f3dddae0d35.png" />
+<img alt="../../_images/496f472b442d23694393b79c702634e63376420592e2996594755a41ec998e42.png" src="../../_images/496f472b442d23694393b79c702634e63376420592e2996594755a41ec998e42.png" />
 </div>
 </div>
 </section>
@@ -582,7 +615,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b3f8db19df3a092375ac8f0e1d248d560b27842f008585ad354c16fbf3b3808b.png" src="../../_images/b3f8db19df3a092375ac8f0e1d248d560b27842f008585ad354c16fbf3b3808b.png" />
+<img alt="../../_images/fd1c75d85e4f672fd503ca56b244eb8af3911aaced559911c7f6ea94b6fcc399.png" src="../../_images/fd1c75d85e4f672fd503ca56b244eb8af3911aaced559911c7f6ea94b6fcc399.png" />
 </div>
 </div>
 </section>
@@ -623,7 +656,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5fa5a468335b74465616f626b781bd169e21410048190ff993b1a10faff2dbc3.png" src="../../_images/5fa5a468335b74465616f626b781bd169e21410048190ff993b1a10faff2dbc3.png" />
+<img alt="../../_images/b2bfda0a48ddde9b1dd503629760339ace858fe9d265e61c673fba05b2b795c2.png" src="../../_images/b2bfda0a48ddde9b1dd503629760339ace858fe9d265e61c673fba05b2b795c2.png" />
 </div>
 </div>
 </section>
@@ -659,7 +692,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c3af8a45e015a76245d7ccc31a3af66e396916b448062c09f9eb85fc62ec5eb0.png" src="../../_images/c3af8a45e015a76245d7ccc31a3af66e396916b448062c09f9eb85fc62ec5eb0.png" />
+<img alt="../../_images/aafa627415fe8cf3f2ab58e0ac1a72d53ef4aab2d25d9519233ad1fbdc8b97e0.png" src="../../_images/aafa627415fe8cf3f2ab58e0ac1a72d53ef4aab2d25d9519233ad1fbdc8b97e0.png" />
 </div>
 </div>
 </section>
@@ -684,7 +717,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complete graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/e8fa688bda7b90907164dfeefd33c76b75c184bac1a42debbe066fb56e4105b0.png" src="../../_images/e8fa688bda7b90907164dfeefd33c76b75c184bac1a42debbe066fb56e4105b0.png" />
+<img alt="../../_images/ab1b9f202d1946d4d5904369e825b314df162f7a5278306a0be6ad7c9b9b71c8.png" src="../../_images/ab1b9f202d1946d4d5904369e825b314df162f7a5278306a0be6ad7c9b9b71c8.png" />
 </div>
 </div>
 </section>
@@ -729,7 +762,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" src="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" />
+<img alt="../../_images/78ee009ae67563eef0695184c40e8853bdfff97ba3cefbfe6fad072f1d2b8f73.png" src="../../_images/78ee009ae67563eef0695184c40e8853bdfff97ba3cefbfe6fad072f1d2b8f73.png" />
 </div>
 </div>
 </section>
@@ -754,7 +787,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complement of graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/3317601b391c14b5b6dad5eed41960a5e37639322116697ff9c02a617a559092.png" src="../../_images/3317601b391c14b5b6dad5eed41960a5e37639322116697ff9c02a617a559092.png" />
+<img alt="../../_images/c1e23e3a1a9e5787c8b4920b14d648257c67d4d4f69e2a631cd27c44d4edaa89.png" src="../../_images/c1e23e3a1a9e5787c8b4920b14d648257c67d4d4f69e2a631cd27c44d4edaa89.png" />
 </div>
 </div>
 <p><strong>Null graphs</strong> and <strong>complete graphs</strong> are complementary. That is, for every positive integer <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(\overline{N_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(K_{v}\)</span> and <span class="math notranslate nohighlight">\(\overline{K_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(N_{v}\)</span>.</p>
@@ -793,7 +826,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/07f67effcc868a04cb33d85142a86c24bd3dbb11c28f23332e92210a94c727ae.png" src="../../_images/07f67effcc868a04cb33d85142a86c24bd3dbb11c28f23332e92210a94c727ae.png" />
+<img alt="../../_images/8220d0a1e95a8af2f8227478641c9b450072960444e08337f36f55c36d245f86.png" src="../../_images/8220d0a1e95a8af2f8227478641c9b450072960444e08337f36f55c36d245f86.png" />
 </div>
 </div>
 </section>
@@ -848,7 +881,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ce965be1c622cd85e6555d7f8f3100342658844736a9de03f75b6c08cebc6b8b.png" src="../../_images/ce965be1c622cd85e6555d7f8f3100342658844736a9de03f75b6c08cebc6b8b.png" />
+<img alt="../../_images/fa405d5993d329039934a08efbc3ed9f01614ceac785c12931c74742786ef6e9.png" src="../../_images/fa405d5993d329039934a08efbc3ed9f01614ceac785c12931c74742786ef6e9.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -888,7 +921,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" src="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" />
+<img alt="../../_images/98ef77f4f3459ffee46090038ec3b9d29eb066f01cd98b4adf834d6fe2e13e59.png" src="../../_images/98ef77f4f3459ffee46090038ec3b9d29eb066f01cd98b4adf834d6fe2e13e59.png" />
 </div>
 </div>
 </section>
@@ -968,7 +1001,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9fddd3e6c79f5af6aae8bc5ecec3cd299ff834f68b5d5fcd01ea84b5d1634f93.png" src="../../_images/9fddd3e6c79f5af6aae8bc5ecec3cd299ff834f68b5d5fcd01ea84b5d1634f93.png" />
+<img alt="../../_images/afc1523dffe987611e50aa11508069374d024d6af4c40a22c1cf41691e4e6954.png" src="../../_images/afc1523dffe987611e50aa11508069374d024d6af4c40a22c1cf41691e4e6954.png" />
 </div>
 </div>
 <ol class="arabic simple" start="8">
@@ -1041,7 +1074,7 @@ Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyc
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/33f6948f84ed8c26d68448640aeb750f4b8ccd6269c09ce884b03397c5146690.png" src="../../_images/33f6948f84ed8c26d68448640aeb750f4b8ccd6269c09ce884b03397c5146690.png" />
+<img alt="../../_images/f8b35323b9973cf14e91a55e937c15508b686e52ad73914a432b967070853d78.png" src="../../_images/f8b35323b9973cf14e91a55e937c15508b686e52ad73914a432b967070853d78.png" />
 </div>
 </div>
 </section>
@@ -1096,7 +1129,7 @@ Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyc
 Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </pre></div>
 </div>
-<img alt="../../_images/bc70680cfd964990b469f24d715b9139670247fc7ba7844faa0194c57f2495bc.png" src="../../_images/bc70680cfd964990b469f24d715b9139670247fc7ba7844faa0194c57f2495bc.png" />
+<img alt="../../_images/7a0d20d2ad0c2f0a312a9a0ac0bc48948c48bc72595c8c68a745223c5e753a77.png" src="../../_images/7a0d20d2ad0c2f0a312a9a0ac0bc48948c48bc72595c8c68a745223c5e753a77.png" />
 </div>
 </div>
 </section>
@@ -1132,12 +1165,389 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0f2c53e6255b56cc0d4de61463dd2b1eb70f8976b2a4301e57eacc5f42a3ebae.png" src="../../_images/0f2c53e6255b56cc0d4de61463dd2b1eb70f8976b2a4301e57eacc5f42a3ebae.png" />
+<img alt="../../_images/ff0c4319ffe38374955f0a1d245036c94b830b654979edc649402f345366b7d1.png" src="../../_images/ff0c4319ffe38374955f0a1d245036c94b830b654979edc649402f345366b7d1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hamiltonian walk:  [[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;D&#39;]]
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="modeling-choice">
+<h2><span class="section-number">3.21. </span>Modeling choice<a class="headerlink" href="#modeling-choice" title="Permalink to this heading">#</a></h2>
+<p><img alt="graph%20models.PNG" src="book/graphs/attachment:graph%20models.PNG" /></p>
+<section id="adjacency-matrix">
+<h3><span class="section-number">3.21.1. </span>Adjacency matrix<a class="headerlink" href="#adjacency-matrix" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_nodes</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">n_nodes</span><span class="p">))</span>  <span class="c1"># initialize to a graph with no edges</span>
+
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># from node 0 to node 1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># from node 1 to node 2...</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># etc, etc.</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="networkx-to-adj-matrix">
+<h3><span class="section-number">3.21.2. </span>Networkx to adj matrix<a class="headerlink" href="#networkx-to-adj-matrix" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">g</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x1df26321a00&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 0., 0.],
+       [1., 0., 1., 0., 1.],
+       [0., 1., 0., 1., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., 1., 0.],
+       [1., 0., 1., 0., 1.],
+       [0., 1., 0., 0., 0.],
+       [1., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plotting">
+<h2><span class="section-number">3.22. </span>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8a758e8b881dcc61ee8e2d048b4ba150a3eb210863d5b426b3867afd2fb2b394.png" src="../../_images/8a758e8b881dcc61ee8e2d048b4ba150a3eb210863d5b426b3867afd2fb2b394.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b56a96aabfb368662c8535c91960aadccdc87d2d0c920e4cbe37b3dded651125.png" src="../../_images/b56a96aabfb368662c8535c91960aadccdc87d2d0c920e4cbe37b3dded651125.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">:</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+<span class="n">partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition_map</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span>
+    <span class="n">A</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">ys</span><span class="p">,</span>
+    <span class="n">node_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">edge_linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">node_hue</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">node_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/08556bbbb2ec52fd549c49f138a77a18bb7238654b621da086c0b6b2fa1eca8c.png" src="../../_images/08556bbbb2ec52fd549c49f138a77a18bb7238654b621da086c0b6b2fa1eca8c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 4., 5., ..., 2., 0., 0.],
+       [4., 0., 6., ..., 0., 0., 0.],
+       [5., 6., 0., ..., 0., 2., 0.],
+       ...,
+       [2., 0., 0., ..., 0., 4., 4.],
+       [0., 0., 2., ..., 4., 0., 5.],
+       [0., 0., 0., ..., 4., 5., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/0e0b0c3058fbc4745eb04a847da9077c14026af4ab007de95e2f7956f1ee2112.png" src="../../_images/0e0b0c3058fbc4745eb04a847da9077c14026af4ab007de95e2f7956f1ee2112.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># n is the number of nodes</span>
+<span class="n">perm</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">A_perm</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">perm</span><span class="p">][:,</span> <span class="n">perm</span><span class="p">]</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A_perm</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/03a57338c9c142a6f30fc69f8a0aeec1cf26c973b595b728895608eb2cc77dc3.png" src="../../_images/03a57338c9c142a6f30fc69f8a0aeec1cf26c973b595b728895608eb2cc77dc3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">partition_map</span> <span class="o">=</span> <span class="n">leiden</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">partition_map</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 0, 0, 0, 1, 2, 2, 0, 1, 1, 1, 2, 2, 0, 1, 2, 1, 2, 1,
+       2, 3, 3, 3, 2, 3, 3, 2, 2, 3, 2, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">inner_hier_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">sort_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/9f4903e159d359c064eeae26aae93f6a2a0cd64650c8d5f0efcce1a73b8a6d10.png" src="../../_images/9f4903e159d359c064eeae26aae93f6a2a0cd64650c8d5f0efcce1a73b8a6d10.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_fully_connected</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DegreeView({0: 16, 1: 9, 2: 10, 3: 6, 4: 3, 5: 4, 6: 4, 7: 4, 8: 5, 9: 2, 10: 3, 11: 1, 12: 2, 13: 5, 14: 2, 15: 2, 16: 2, 17: 2, 18: 2, 19: 3, 20: 2, 21: 2, 22: 2, 23: 5, 24: 3, 25: 3, 26: 2, 27: 4, 28: 3, 29: 4, 30: 4, 31: 6, 32: 12, 33: 17})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">load_drosophila_left</span><span class="p">()[:</span><span class="mi">28</span><span class="p">,</span> <span class="p">:</span><span class="mi">28</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">binarize</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">map_to_nodes</span><span class="p">(</span><span class="n">node_map</span><span class="p">):</span>
+    <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># utility function to make it easy to compare dicts to array outputs</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">node_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))(</span><span class="n">nodelist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/55b2abd806602b41f46af265637ae11d6f7583fa5474563de78d786faa6f1268.png" src="../../_images/55b2abd806602b41f46af265637ae11d6f7583fa5474563de78d786faa6f1268.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">out_degree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OutDegreeView({0: 24, 1: 26, 2: 26, 3: 26, 4: 25, 5: 25, 6: 24, 7: 26, 8: 26, 9: 23, 10: 25, 11: 25, 12: 24, 13: 23, 14: 25, 15: 26, 16: 23, 17: 23, 18: 24, 19: 25, 20: 26, 21: 25, 22: 22, 23: 24, 24: 17, 25: 22, 26: 18, 27: 21})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">in_degree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InDegreeView({0: 25, 1: 24, 2: 25, 3: 26, 4: 27, 5: 27, 6: 23, 7: 23, 8: 23, 9: 24, 10: 21, 11: 23, 12: 26, 13: 23, 14: 27, 15: 25, 16: 27, 17: 23, 18: 25, 19: 27, 20: 24, 21: 25, 22: 20, 23: 23, 24: 17, 25: 19, 26: 20, 27: 27})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="centrality">
+<h2><span class="section-number">3.23. </span>centrality<a class="headerlink" href="#centrality" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="eigenvector-centrality">
+<h3><span class="section-number">3.23.1. </span>eigenvector centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_to_nodes</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.35548349, 0.26595387, 0.31718939, 0.21117408, 0.07596646,
+       0.07948058, 0.07948058, 0.17095511, 0.22740509, 0.10267519,
+       0.07596646, 0.05285417, 0.08425192, 0.2264697 , 0.10140628,
+       0.10140628, 0.02363479, 0.09239676, 0.10140628, 0.14791134,
+       0.10140628, 0.09239676, 0.10140628, 0.15012329, 0.05705374,
+       0.0592082 , 0.07558192, 0.13347933, 0.13107926, 0.13496529,
+       0.17476028, 0.19103627, 0.30865105, 0.37337121])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="page-rank">
+<h3><span class="section-number">3.23.2. </span>page rank<a class="headerlink" href="#page-rank" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pagerank_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">pagerank_dict</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">nodelist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.08850807, 0.05741484, 0.06276686, 0.03721208, 0.02050398,
+       0.03381044, 0.03152901, 0.02646462, 0.03338156, 0.00946322,
+       0.02068902, 0.00978569, 0.01147487, 0.03347419, 0.0129416 ,
+       0.01637633, 0.0167554 , 0.00967727, 0.00954486, 0.01307752,
+       0.01122424, 0.01136015, 0.0129606 , 0.04114597, 0.01663437,
+       0.02867296, 0.01524039, 0.02723536, 0.01447852, 0.02827181,
+       0.02303184, 0.04198549, 0.07592644, 0.09698042])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="betweeness-centrality">
+<h3><span class="section-number">3.23.3. </span>Betweeness centrality<a class="headerlink" href="#betweeness-centrality" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_to_nodes</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.43763528, 0.05393669, 0.14365681, 0.01190927, 0.00063131,
+       0.02998737, 0.02998737, 0.        , 0.05592683, 0.00084776,
+       0.00063131, 0.        , 0.        , 0.0458634 , 0.        ,
+       0.        , 0.        , 0.        , 0.        , 0.03247505,
+       0.        , 0.        , 0.        , 0.01761364, 0.0022096 ,
+       0.00384049, 0.        , 0.02233345, 0.00179473, 0.00292208,
+       0.01441198, 0.13827561, 0.14524711, 0.30407498])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1232,6 +1642,18 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-graph">3.18. Dual graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-walk">3.19. Euler walk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamilton-walk">3.20. Hamilton walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-choice">3.21. Modeling choice</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjacency-matrix">3.21.1. Adjacency matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#networkx-to-adj-matrix">3.21.2. Networkx to adj matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">3.22. Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centrality">3.23. centrality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-centrality">3.23.1. eigenvector centrality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-rank">3.23.2. page rank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#betweeness-centrality">3.23.3. Betweeness centrality</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
