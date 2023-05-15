@@ -466,6 +466,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#betweeness-centrality">3.23.3. Betweeness centrality</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">3.24. Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dash-application">3.25. Dash application</a></li>
 </ul>
             </nav>
         </div>
@@ -488,6 +490,23 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(A \subset B\)</span> A is a subset of B.</p>
 <p><span class="math notranslate nohighlight">\(J = \{\}\)</span> J is an empty set or null set.</p>
 <p>A set can never have redundant elements. A set can be denoted as <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -495,8 +514,14 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># import libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># import network and graph libraries</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">bipartite</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
@@ -506,8 +531,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">graspologic.datasets</span> <span class="kn">import</span> <span class="n">load_drosophila_left</span>
 <span class="kn">from</span> <span class="nn">graspologic.utils</span> <span class="kn">import</span> <span class="n">binarize</span>
 
-<span class="c1"># import network and graph libraries</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
 
 <span class="c1"># Set display params</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
@@ -536,20 +560,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">graspologic.plot</span> <span class="kn">import</span> <span class="n">heatmap</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">graspologic.partition</span> <span class="kn">import</span> <span class="n">leiden</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -579,7 +589,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/496f472b442d23694393b79c702634e63376420592e2996594755a41ec998e42.png" src="../../_images/496f472b442d23694393b79c702634e63376420592e2996594755a41ec998e42.png" />
+<img alt="../../_images/fbb7a4151ba8420dd56ca28281719c4a2b3070b90c34653efe5b5b4f73f75dd5.png" src="../../_images/fbb7a4151ba8420dd56ca28281719c4a2b3070b90c34653efe5b5b4f73f75dd5.png" />
 </div>
 </div>
 </section>
@@ -615,7 +625,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/fd1c75d85e4f672fd503ca56b244eb8af3911aaced559911c7f6ea94b6fcc399.png" src="../../_images/fd1c75d85e4f672fd503ca56b244eb8af3911aaced559911c7f6ea94b6fcc399.png" />
+<img alt="../../_images/54772b2faa21041d62326ac22088b2aff2e3499365117fcff1b86d77f06379bb.png" src="../../_images/54772b2faa21041d62326ac22088b2aff2e3499365117fcff1b86d77f06379bb.png" />
 </div>
 </div>
 </section>
@@ -656,7 +666,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b2bfda0a48ddde9b1dd503629760339ace858fe9d265e61c673fba05b2b795c2.png" src="../../_images/b2bfda0a48ddde9b1dd503629760339ace858fe9d265e61c673fba05b2b795c2.png" />
+<img alt="../../_images/ce46ae1b088fc61c94fcb2e9c6c88f0a22a5a8d3ed48e1fde08096aea7241088.png" src="../../_images/ce46ae1b088fc61c94fcb2e9c6c88f0a22a5a8d3ed48e1fde08096aea7241088.png" />
 </div>
 </div>
 </section>
@@ -692,7 +702,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/aafa627415fe8cf3f2ab58e0ac1a72d53ef4aab2d25d9519233ad1fbdc8b97e0.png" src="../../_images/aafa627415fe8cf3f2ab58e0ac1a72d53ef4aab2d25d9519233ad1fbdc8b97e0.png" />
+<img alt="../../_images/1dd778a24deabce29835579790fd7692f073aa7230eb14d707ac620b82d6758f.png" src="../../_images/1dd778a24deabce29835579790fd7692f073aa7230eb14d707ac620b82d6758f.png" />
 </div>
 </div>
 </section>
@@ -717,7 +727,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complete graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/ab1b9f202d1946d4d5904369e825b314df162f7a5278306a0be6ad7c9b9b71c8.png" src="../../_images/ab1b9f202d1946d4d5904369e825b314df162f7a5278306a0be6ad7c9b9b71c8.png" />
+<img alt="../../_images/44d0f5206a466b34ebfc10009f025197bfde075909140163fb2bea7b016940ae.png" src="../../_images/44d0f5206a466b34ebfc10009f025197bfde075909140163fb2bea7b016940ae.png" />
 </div>
 </div>
 </section>
@@ -762,7 +772,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/78ee009ae67563eef0695184c40e8853bdfff97ba3cefbfe6fad072f1d2b8f73.png" src="../../_images/78ee009ae67563eef0695184c40e8853bdfff97ba3cefbfe6fad072f1d2b8f73.png" />
+<img alt="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" src="../../_images/9344c469a255cbbe7564f859e947b4de0f8f8a1cf13b44bc96a23b02d4180765.png" />
 </div>
 </div>
 </section>
@@ -787,7 +797,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Complement of graph&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/c1e23e3a1a9e5787c8b4920b14d648257c67d4d4f69e2a631cd27c44d4edaa89.png" src="../../_images/c1e23e3a1a9e5787c8b4920b14d648257c67d4d4f69e2a631cd27c44d4edaa89.png" />
+<img alt="../../_images/5808bbba154ad1a7f543561eed104c5d869060167f70f44d7fe361a82bccd5e0.png" src="../../_images/5808bbba154ad1a7f543561eed104c5d869060167f70f44d7fe361a82bccd5e0.png" />
 </div>
 </div>
 <p><strong>Null graphs</strong> and <strong>complete graphs</strong> are complementary. That is, for every positive integer <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(\overline{N_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(K_{v}\)</span> and <span class="math notranslate nohighlight">\(\overline{K_{v}}\)</span> is equal to <span class="math notranslate nohighlight">\(N_{v}\)</span>.</p>
@@ -826,7 +836,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8220d0a1e95a8af2f8227478641c9b450072960444e08337f36f55c36d245f86.png" src="../../_images/8220d0a1e95a8af2f8227478641c9b450072960444e08337f36f55c36d245f86.png" />
+<img alt="../../_images/7c49d72cd8d0468f96b99b93fb5890e8d5c5b8245d4f5a10139520aaff937fe8.png" src="../../_images/7c49d72cd8d0468f96b99b93fb5890e8d5c5b8245d4f5a10139520aaff937fe8.png" />
 </div>
 </div>
 </section>
@@ -881,7 +891,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/fa405d5993d329039934a08efbc3ed9f01614ceac785c12931c74742786ef6e9.png" src="../../_images/fa405d5993d329039934a08efbc3ed9f01614ceac785c12931c74742786ef6e9.png" />
+<img alt="../../_images/b7c42b6a959686889097d24195c829b23fe71ad52ecc0d53033deb5d7c5a6ff4.png" src="../../_images/b7c42b6a959686889097d24195c829b23fe71ad52ecc0d53033deb5d7c5a6ff4.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -921,7 +931,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/98ef77f4f3459ffee46090038ec3b9d29eb066f01cd98b4adf834d6fe2e13e59.png" src="../../_images/98ef77f4f3459ffee46090038ec3b9d29eb066f01cd98b4adf834d6fe2e13e59.png" />
+<img alt="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" src="../../_images/fb63bedf2704fb6e49d7dead61c60c2b859628fd6a648f3c04acf4b4aafea699.png" />
 </div>
 </div>
 </section>
@@ -1001,7 +1011,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/afc1523dffe987611e50aa11508069374d024d6af4c40a22c1cf41691e4e6954.png" src="../../_images/afc1523dffe987611e50aa11508069374d024d6af4c40a22c1cf41691e4e6954.png" />
+<img alt="../../_images/9fddd3e6c79f5af6aae8bc5ecec3cd299ff834f68b5d5fcd01ea84b5d1634f93.png" src="../../_images/9fddd3e6c79f5af6aae8bc5ecec3cd299ff834f68b5d5fcd01ea84b5d1634f93.png" />
 </div>
 </div>
 <ol class="arabic simple" start="8">
@@ -1074,7 +1084,7 @@ Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyc
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f8b35323b9973cf14e91a55e937c15508b686e52ad73914a432b967070853d78.png" src="../../_images/f8b35323b9973cf14e91a55e937c15508b686e52ad73914a432b967070853d78.png" />
+<img alt="../../_images/c13964fad7883403d78ec2e1070d807d0a084a3feb6f049ac45d20cb17977b6e.png" src="../../_images/c13964fad7883403d78ec2e1070d807d0a084a3feb6f049ac45d20cb17977b6e.png" />
 </div>
 </div>
 </section>
@@ -1129,7 +1139,7 @@ Other than <span class="math notranslate nohighlight">\(K_1\)</span> and the cyc
 Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </pre></div>
 </div>
-<img alt="../../_images/7a0d20d2ad0c2f0a312a9a0ac0bc48948c48bc72595c8c68a745223c5e753a77.png" src="../../_images/7a0d20d2ad0c2f0a312a9a0ac0bc48948c48bc72595c8c68a745223c5e753a77.png" />
+<img alt="../../_images/bc70680cfd964990b469f24d715b9139670247fc7ba7844faa0194c57f2495bc.png" src="../../_images/bc70680cfd964990b469f24d715b9139670247fc7ba7844faa0194c57f2495bc.png" />
 </div>
 </div>
 </section>
@@ -1165,7 +1175,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff0c4319ffe38374955f0a1d245036c94b830b654979edc649402f345366b7d1.png" src="../../_images/ff0c4319ffe38374955f0a1d245036c94b830b654979edc649402f345366b7d1.png" />
+<img alt="../../_images/62f73b1b278bc5a870fbae714f0f938e1db995f0bf562e51674659550e1ac059.png" src="../../_images/62f73b1b278bc5a870fbae714f0f938e1db995f0bf562e51674659550e1ac059.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hamiltonian walk:  [[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;, &#39;D&#39;]]
 </pre></div>
 </div>
@@ -1217,14 +1227,12 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="n">g</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;networkx.classes.graph.Graph at 0x1df26321a00&gt;
-</pre></div>
-</div>
+<img alt="../../_images/69370bcbb078a04cdfc6b997fa326f56da3c6194c7d2ffc41103c15f30dc6cfd.png" src="../../_images/69370bcbb078a04cdfc6b997fa326f56da3c6194c7d2ffc41103c15f30dc6cfd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1271,7 +1279,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8a758e8b881dcc61ee8e2d048b4ba150a3eb210863d5b426b3867afd2fb2b394.png" src="../../_images/8a758e8b881dcc61ee8e2d048b4ba150a3eb210863d5b426b3867afd2fb2b394.png" />
+<img alt="../../_images/9e540fe8767b3faf1cc3740c5b66ac96271251cbe04a978bf8a0bacf3e3c814c.png" src="../../_images/9e540fe8767b3faf1cc3740c5b66ac96271251cbe04a978bf8a0bacf3e3c814c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1282,7 +1290,29 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b56a96aabfb368662c8535c91960aadccdc87d2d0c920e4cbe37b3dded651125.png" src="../../_images/b56a96aabfb368662c8535c91960aadccdc87d2d0c920e4cbe37b3dded651125.png" />
+<img alt="../../_images/77daff6a93d73b01893f572b75607b195175c7ba055263a7ba361b0c5a57c6fd.png" src="../../_images/77daff6a93d73b01893f572b75607b195175c7ba055263a7ba361b0c5a57c6fd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
+
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 4., 5., ..., 2., 0., 0.],
+       [4., 0., 6., ..., 0., 0., 0.],
+       [5., 6., 0., ..., 0., 2., 0.],
+       ...,
+       [2., 0., 0., ..., 0., 4., 4.],
+       [0., 0., 2., ..., 4., 0., 5.],
+       [0., 0., 0., ..., 4., 5., 0.]])
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1314,29 +1344,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/08556bbbb2ec52fd549c49f138a77a18bb7238654b621da086c0b6b2fa1eca8c.png" src="../../_images/08556bbbb2ec52fd549c49f138a77a18bb7238654b621da086c0b6b2fa1eca8c.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
-
-<span class="n">A</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 4., 5., ..., 2., 0., 0.],
-       [4., 0., 6., ..., 0., 0., 0.],
-       [5., 6., 0., ..., 0., 2., 0.],
-       ...,
-       [2., 0., 0., ..., 0., 4., 4.],
-       [0., 0., 2., ..., 4., 0., 5.],
-       [0., 0., 0., ..., 4., 5., 0.]])
-</pre></div>
-</div>
+<img alt="../../_images/36d1e9bcdcccee2ea5d629fa32f59c6d017f7617a73b77da3df3ecd26ed288fa.png" src="../../_images/36d1e9bcdcccee2ea5d629fa32f59c6d017f7617a73b77da3df3ecd26ed288fa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1346,10 +1354,10 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/0e0b0c3058fbc4745eb04a847da9077c14026af4ab007de95e2f7956f1ee2112.png" src="../../_images/0e0b0c3058fbc4745eb04a847da9077c14026af4ab007de95e2f7956f1ee2112.png" />
+<img alt="../../_images/b92fa4fa8d8a73066e3baa038e19c2651ec6a1f4a4e51fd2e1e4db6e033f5315.png" src="../../_images/b92fa4fa8d8a73066e3baa038e19c2651ec6a1f4a4e51fd2e1e4db6e033f5315.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1366,10 +1374,10 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/03a57338c9c142a6f30fc69f8a0aeec1cf26c973b595b728895608eb2cc77dc3.png" src="../../_images/03a57338c9c142a6f30fc69f8a0aeec1cf26c973b595b728895608eb2cc77dc3.png" />
+<img alt="../../_images/5030abdbbcf8c66f0a87aa139274a0b9e1274db04daf8fa9303ce60c58601bf6.png" src="../../_images/5030abdbbcf8c66f0a87aa139274a0b9e1274db04daf8fa9303ce60c58601bf6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1396,10 +1404,10 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/9f4903e159d359c064eeae26aae93f6a2a0cd64650c8d5f0efcce1a73b8a6d10.png" src="../../_images/9f4903e159d359c064eeae26aae93f6a2a0cd64650c8d5f0efcce1a73b8a6d10.png" />
+<img alt="../../_images/0bbe715de087c5cc212a30429d5abbb1e9669778e81906243e009496ada36cc4.png" src="../../_images/0bbe715de087c5cc212a30429d5abbb1e9669778e81906243e009496ada36cc4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1447,7 +1455,7 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/55b2abd806602b41f46af265637ae11d6f7583fa5474563de78d786faa6f1268.png" src="../../_images/55b2abd806602b41f46af265637ae11d6f7583fa5474563de78d786faa6f1268.png" />
+<img alt="../../_images/39f42038b2795d3ca61c05f06ea9d9c59be769304cfcc29d1ff180ece2b813f7.png" src="../../_images/39f42038b2795d3ca61c05f06ea9d9c59be769304cfcc29d1ff180ece2b813f7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1548,6 +1556,1381 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 </div>
 </div>
 </section>
+</section>
+<section id="data">
+<h2><span class="section-number">3.24. </span>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load kpi data from both dev and prod env</span>
+<span class="n">stl_dev</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;curve_kpis_stl1_dev.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">stl_prod</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;curve_kpis_stl1_prod.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the date without time</span>
+<span class="n">stl_dev</span><span class="p">[</span><span class="s1">&#39;date_nt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stl_dev</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">stl_prod</span><span class="p">[</span><span class="s1">&#39;date_nt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stl_prod</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new column with train and obm color </span>
+<span class="n">stl_dev</span><span class="p">[</span><span class="s1">&#39;train_obm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stl_dev</span><span class="p">[</span><span class="s1">&#39;train_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">stl_dev</span><span class="p">[</span><span class="s2">&quot;obm_color&quot;</span><span class="p">]</span>
+<span class="n">stl_prod</span><span class="p">[</span><span class="s1">&#39;train_obm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stl_prod</span><span class="p">[</span><span class="s1">&#39;train_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">stl_prod</span><span class="p">[</span><span class="s2">&quot;obm_color&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stl_prod</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;curve_id&#39;, &#39;primary_mac_address&#39;, &#39;train_id&#39;, &#39;obm_direction&#39;, &#39;date&#39;,
+       &#39;secondary_mac_address&#39;, &#39;secondary_connection&#39;, &#39;start_time&#39;,
+       &#39;end_time&#39;, &#39;track_id&#39;, &#39;tre_id&#39;, &#39;ap_color&#39;, &#39;crssi_peak&#39;, &#39;crssi_min&#39;,
+       &#39;crssi_avg&#39;, &#39;kp_min&#39;, &#39;kp_max&#39;, &#39;speed_avg&#39;, &#39;curve_length&#39;, &#39;ho_diff&#39;,
+       &#39;ho_duration&#39;, &#39;ho_reason&#39;, &#39;kp_inc&#39;, &#39;ping_pong&#39;, &#39;per_curve&#39;,
+       &#39;packet_loss_cnt&#39;, &#39;obm_color&#39;, &#39;ap_kp_in_track&#39;, &#39;hi1&#39;, &#39;hi2&#39;,
+       &#39;hi2_ant1&#39;, &#39;hi2_ant2&#39;, &#39;ap_name_geo&#39;, &#39;tre_ap_name&#39;, &#39;is_sim_flag&#39;,
+       &#39;date_nt&#39;, &#39;train_obm&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># group by tre and train_obm to get the average of eah combination</span>
+<span class="n">bipartite_df</span> <span class="o">=</span> <span class="n">stl_dev</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;tre_id&#39;</span><span class="p">,</span><span class="s1">&#39;train_obm&#39;</span><span class="p">,</span><span class="s1">&#39;date_nt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;packet_loss_cnt&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bipartite_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tre_id</th>
+      <th>train_obm</th>
+      <th>date_nt</th>
+      <th>packet_loss_cnt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AP01</td>
+      <td>103_BLUE</td>
+      <td>2022-08-10</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AP01</td>
+      <td>103_BLUE</td>
+      <td>2023-01-16</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AP01</td>
+      <td>107_BLUE</td>
+      <td>2022-08-02</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AP01</td>
+      <td>107_BLUE</td>
+      <td>2023-01-06</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AP01</td>
+      <td>111_BLUE</td>
+      <td>2022-12-19</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9031</th>
+      <td>tre_00:14:5a:02:36:48</td>
+      <td>55_BLUE</td>
+      <td>2023-03-09</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9032</th>
+      <td>tre_00:14:5a:02:36:48</td>
+      <td>79_RED</td>
+      <td>2023-03-09</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9033</th>
+      <td>tre_00:14:5a:02:36:48</td>
+      <td>83_BLUE</td>
+      <td>2023-03-16</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9034</th>
+      <td>tre_00:14:5a:02:36:48</td>
+      <td>87_BLUE</td>
+      <td>2022-09-29</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9035</th>
+      <td>tre_00:14:5a:02:36:48</td>
+      <td>87_BLUE</td>
+      <td>2023-03-16</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>9036 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write a sample code to use pandas group by and aggregate functions on multiple columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bipartite_df</span><span class="p">[</span><span class="s1">&#39;date_nt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bp_df</span> <span class="o">=</span> <span class="n">bipartite_df</span><span class="p">[</span><span class="n">bipartite_df</span><span class="p">[</span><span class="s1">&#39;date_nt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2022-08-02&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">.</span><span class="n">packet_loss_cnt</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>packet_loss_cnt
+0    167
+1    119
+2     47
+3     10
+4      2
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;tre_id&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">k</span><span class="p">[[</span><span class="s1">&#39;tre_id&#39;</span><span class="p">,</span><span class="s1">&#39;train_obm&#39;</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;tre_id&#39;,), (&#39;train_obm&#39;,)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="p">[[</span><span class="s1">&#39;tre_id&#39;</span><span class="p">,</span> <span class="s1">&#39;train_obm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                        (AP01, 103_BLUE)
+36                       (AP02, 103_BLUE)
+91                       (AP03, 103_BLUE)
+93                        (AP03, 103_RED)
+102                      (AP03, 115_BLUE)
+                      ...                
+8852    (tre_00:14:5a:02:33:ec, 115_BLUE)
+8881     (tre_00:14:5a:02:33:ee, 103_RED)
+8887     (tre_00:14:5a:02:33:ee, 115_RED)
+8940    (tre_00:14:5a:02:35:b1, 103_BLUE)
+8946    (tre_00:14:5a:02:35:b1, 115_BLUE)
+Length: 289, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="s2">&quot;nothing&quot;</span><span class="p">},</span> <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add multiple weights for each edge to represent dynamic graphs and also add nodes</span>
+<span class="c1"># Define your graph &#39;g&#39; here</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="c1"># Add nodes</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">edge_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># Example weights for each edge</span>
+<span class="n">edge_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+
+<span class="c1"># Create a new graph with dynamic weights</span>
+<span class="n">dynamic_g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add edges with multiple weights to the new graph</span>
+<span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">edge_weights</span><span class="p">):</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">edge</span>
+    <span class="n">dynamic_g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="c1"># Print the edges and their weights in the dynamic graph</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">dynamic_g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Edge: (</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">), Weight: </span><span class="si">{</span><span class="n">weight</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">dynamic_g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d5c7914c578423b810e8a068082b15a37b244d3f6226e71b7644dee680f72b1d.png" src="../../_images/d5c7914c578423b810e8a068082b15a37b244d3f6226e71b7644dee680f72b1d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bp_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="c1"># Add nodes with the node attribute &quot;bipartite&quot;</span>
+<span class="n">bp_graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">bp_df</span><span class="p">[</span><span class="s1">&#39;tre_id&#39;</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bp_graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">bp_df</span><span class="p">[</span><span class="s1">&#39;train_obm&#39;</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx_to_cyto</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;data&#39;: [],
+ &#39;directed&#39;: False,
+ &#39;multigraph&#39;: False,
+ &#39;elements&#39;: {&#39;nodes&#39;: [{&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;AP01&#39;,
+     &#39;name&#39;: &#39;AP01&#39;,
+     &#39;label&#39;: &#39;AP01&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP02&#39;, &#39;value&#39;: &#39;AP02&#39;, &#39;name&#39;: &#39;AP02&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP03&#39;, &#39;value&#39;: &#39;AP03&#39;, &#39;name&#39;: &#39;AP03&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP05&#39;, &#39;value&#39;: &#39;AP05&#39;, &#39;name&#39;: &#39;AP05&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP06&#39;, &#39;value&#39;: &#39;AP06&#39;, &#39;name&#39;: &#39;AP06&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP07&#39;, &#39;value&#39;: &#39;AP07&#39;, &#39;name&#39;: &#39;AP07&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP08&#39;, &#39;value&#39;: &#39;AP08&#39;, &#39;name&#39;: &#39;AP08&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP09&#39;, &#39;value&#39;: &#39;AP09&#39;, &#39;name&#39;: &#39;AP09&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP10&#39;, &#39;value&#39;: &#39;AP10&#39;, &#39;name&#39;: &#39;AP10&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP11&#39;, &#39;value&#39;: &#39;AP11&#39;, &#39;name&#39;: &#39;AP11&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP12&#39;, &#39;value&#39;: &#39;AP12&#39;, &#39;name&#39;: &#39;AP12&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP13&#39;, &#39;value&#39;: &#39;AP13&#39;, &#39;name&#39;: &#39;AP13&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP14&#39;, &#39;value&#39;: &#39;AP14&#39;, &#39;name&#39;: &#39;AP14&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP15&#39;, &#39;value&#39;: &#39;AP15&#39;, &#39;name&#39;: &#39;AP15&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP16&#39;, &#39;value&#39;: &#39;AP16&#39;, &#39;name&#39;: &#39;AP16&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP17&#39;, &#39;value&#39;: &#39;AP17&#39;, &#39;name&#39;: &#39;AP17&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP18&#39;, &#39;value&#39;: &#39;AP18&#39;, &#39;name&#39;: &#39;AP18&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP19&#39;, &#39;value&#39;: &#39;AP19&#39;, &#39;name&#39;: &#39;AP19&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP20&#39;, &#39;value&#39;: &#39;AP20&#39;, &#39;name&#39;: &#39;AP20&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP21&#39;, &#39;value&#39;: &#39;AP21&#39;, &#39;name&#39;: &#39;AP21&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP22&#39;, &#39;value&#39;: &#39;AP22&#39;, &#39;name&#39;: &#39;AP22&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP23&#39;, &#39;value&#39;: &#39;AP23&#39;, &#39;name&#39;: &#39;AP23&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP24&#39;, &#39;value&#39;: &#39;AP24&#39;, &#39;name&#39;: &#39;AP24&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP25&#39;, &#39;value&#39;: &#39;AP25&#39;, &#39;name&#39;: &#39;AP25&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP26&#39;, &#39;value&#39;: &#39;AP26&#39;, &#39;name&#39;: &#39;AP26&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP27&#39;, &#39;value&#39;: &#39;AP27&#39;, &#39;name&#39;: &#39;AP27&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP28&#39;, &#39;value&#39;: &#39;AP28&#39;, &#39;name&#39;: &#39;AP28&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP29&#39;, &#39;value&#39;: &#39;AP29&#39;, &#39;name&#39;: &#39;AP29&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP30&#39;, &#39;value&#39;: &#39;AP30&#39;, &#39;name&#39;: &#39;AP30&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP31&#39;, &#39;value&#39;: &#39;AP31&#39;, &#39;name&#39;: &#39;AP31&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP32&#39;, &#39;value&#39;: &#39;AP32&#39;, &#39;name&#39;: &#39;AP32&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP33&#39;, &#39;value&#39;: &#39;AP33&#39;, &#39;name&#39;: &#39;AP33&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP34&#39;, &#39;value&#39;: &#39;AP34&#39;, &#39;name&#39;: &#39;AP34&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP35&#39;, &#39;value&#39;: &#39;AP35&#39;, &#39;name&#39;: &#39;AP35&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP36&#39;, &#39;value&#39;: &#39;AP36&#39;, &#39;name&#39;: &#39;AP36&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP37&#39;, &#39;value&#39;: &#39;AP37&#39;, &#39;name&#39;: &#39;AP37&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP38&#39;, &#39;value&#39;: &#39;AP38&#39;, &#39;name&#39;: &#39;AP38&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP39&#39;, &#39;value&#39;: &#39;AP39&#39;, &#39;name&#39;: &#39;AP39&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;AP40A&#39;,
+     &#39;value&#39;: &#39;AP40A&#39;,
+     &#39;name&#39;: &#39;AP40A&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;AP40B&#39;,
+     &#39;value&#39;: &#39;AP40B&#39;,
+     &#39;name&#39;: &#39;AP40B&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP41&#39;, &#39;value&#39;: &#39;AP41&#39;, &#39;name&#39;: &#39;AP41&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP42&#39;, &#39;value&#39;: &#39;AP42&#39;, &#39;name&#39;: &#39;AP42&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP43&#39;, &#39;value&#39;: &#39;AP43&#39;, &#39;name&#39;: &#39;AP43&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP44&#39;, &#39;value&#39;: &#39;AP44&#39;, &#39;name&#39;: &#39;AP44&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP45&#39;, &#39;value&#39;: &#39;AP45&#39;, &#39;name&#39;: &#39;AP45&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP46&#39;, &#39;value&#39;: &#39;AP46&#39;, &#39;name&#39;: &#39;AP46&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP47&#39;, &#39;value&#39;: &#39;AP47&#39;, &#39;name&#39;: &#39;AP47&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP48&#39;, &#39;value&#39;: &#39;AP48&#39;, &#39;name&#39;: &#39;AP48&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP49&#39;, &#39;value&#39;: &#39;AP49&#39;, &#39;name&#39;: &#39;AP49&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP50&#39;, &#39;value&#39;: &#39;AP50&#39;, &#39;name&#39;: &#39;AP50&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP51&#39;, &#39;value&#39;: &#39;AP51&#39;, &#39;name&#39;: &#39;AP51&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP52&#39;, &#39;value&#39;: &#39;AP52&#39;, &#39;name&#39;: &#39;AP52&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP53&#39;, &#39;value&#39;: &#39;AP53&#39;, &#39;name&#39;: &#39;AP53&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP54&#39;, &#39;value&#39;: &#39;AP54&#39;, &#39;name&#39;: &#39;AP54&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP55&#39;, &#39;value&#39;: &#39;AP55&#39;, &#39;name&#39;: &#39;AP55&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP56&#39;, &#39;value&#39;: &#39;AP56&#39;, &#39;name&#39;: &#39;AP56&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP57&#39;, &#39;value&#39;: &#39;AP57&#39;, &#39;name&#39;: &#39;AP57&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP58&#39;, &#39;value&#39;: &#39;AP58&#39;, &#39;name&#39;: &#39;AP58&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP59&#39;, &#39;value&#39;: &#39;AP59&#39;, &#39;name&#39;: &#39;AP59&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP60&#39;, &#39;value&#39;: &#39;AP60&#39;, &#39;name&#39;: &#39;AP60&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP61&#39;, &#39;value&#39;: &#39;AP61&#39;, &#39;name&#39;: &#39;AP61&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP62&#39;, &#39;value&#39;: &#39;AP62&#39;, &#39;name&#39;: &#39;AP62&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP63&#39;, &#39;value&#39;: &#39;AP63&#39;, &#39;name&#39;: &#39;AP63&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP64&#39;, &#39;value&#39;: &#39;AP64&#39;, &#39;name&#39;: &#39;AP64&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP65&#39;, &#39;value&#39;: &#39;AP65&#39;, &#39;name&#39;: &#39;AP65&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP66&#39;, &#39;value&#39;: &#39;AP66&#39;, &#39;name&#39;: &#39;AP66&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP67&#39;, &#39;value&#39;: &#39;AP67&#39;, &#39;name&#39;: &#39;AP67&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP68&#39;, &#39;value&#39;: &#39;AP68&#39;, &#39;name&#39;: &#39;AP68&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP69&#39;, &#39;value&#39;: &#39;AP69&#39;, &#39;name&#39;: &#39;AP69&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP70&#39;, &#39;value&#39;: &#39;AP70&#39;, &#39;name&#39;: &#39;AP70&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP71&#39;, &#39;value&#39;: &#39;AP71&#39;, &#39;name&#39;: &#39;AP71&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP72&#39;, &#39;value&#39;: &#39;AP72&#39;, &#39;name&#39;: &#39;AP72&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP73&#39;, &#39;value&#39;: &#39;AP73&#39;, &#39;name&#39;: &#39;AP73&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP74&#39;, &#39;value&#39;: &#39;AP74&#39;, &#39;name&#39;: &#39;AP74&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP75&#39;, &#39;value&#39;: &#39;AP75&#39;, &#39;name&#39;: &#39;AP75&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP76&#39;, &#39;value&#39;: &#39;AP76&#39;, &#39;name&#39;: &#39;AP76&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP77&#39;, &#39;value&#39;: &#39;AP77&#39;, &#39;name&#39;: &#39;AP77&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP78&#39;, &#39;value&#39;: &#39;AP78&#39;, &#39;name&#39;: &#39;AP78&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP79&#39;, &#39;value&#39;: &#39;AP79&#39;, &#39;name&#39;: &#39;AP79&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP80&#39;, &#39;value&#39;: &#39;AP80&#39;, &#39;name&#39;: &#39;AP80&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP81&#39;, &#39;value&#39;: &#39;AP81&#39;, &#39;name&#39;: &#39;AP81&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP82&#39;, &#39;value&#39;: &#39;AP82&#39;, &#39;name&#39;: &#39;AP82&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP83&#39;, &#39;value&#39;: &#39;AP83&#39;, &#39;name&#39;: &#39;AP83&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP84&#39;, &#39;value&#39;: &#39;AP84&#39;, &#39;name&#39;: &#39;AP84&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP85&#39;, &#39;value&#39;: &#39;AP85&#39;, &#39;name&#39;: &#39;AP85&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP86&#39;, &#39;value&#39;: &#39;AP86&#39;, &#39;name&#39;: &#39;AP86&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP87&#39;, &#39;value&#39;: &#39;AP87&#39;, &#39;name&#39;: &#39;AP87&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP88&#39;, &#39;value&#39;: &#39;AP88&#39;, &#39;name&#39;: &#39;AP88&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0, &#39;id&#39;: &#39;AP89&#39;, &#39;value&#39;: &#39;AP89&#39;, &#39;name&#39;: &#39;AP89&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:01:86:59&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:01:86:59&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:01:86:59&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:33:a9&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:33:a9&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:33:a9&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:33:b7&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:33:b7&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:33:b7&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:33:ec&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:33:ec&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:33:ec&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:33:ee&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:33:ee&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:33:ee&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:35:b1&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:35:b1&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:35:b1&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 0,
+     &#39;id&#39;: &#39;tre_00:14:5a:02:36:48&#39;,
+     &#39;value&#39;: &#39;tre_00:14:5a:02:36:48&#39;,
+     &#39;name&#39;: &#39;tre_00:14:5a:02:36:48&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 1,
+     &#39;id&#39;: &#39;107_BLUE&#39;,
+     &#39;value&#39;: &#39;107_BLUE&#39;,
+     &#39;name&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 1,
+     &#39;id&#39;: &#39;214_BLUE&#39;,
+     &#39;value&#39;: &#39;214_BLUE&#39;,
+     &#39;name&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 1,
+     &#39;id&#39;: &#39;107_RED&#39;,
+     &#39;value&#39;: &#39;107_RED&#39;,
+     &#39;name&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;bipartite&#39;: 1,
+     &#39;id&#39;: &#39;214_RED&#39;,
+     &#39;value&#39;: &#39;214_RED&#39;,
+     &#39;name&#39;: &#39;214_RED&#39;}}],
+  &#39;edges&#39;: [{&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP01&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP01&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP02&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP02&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP03&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP03&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP03&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP03&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP05&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP05&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP05&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP05&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP06&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP06&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP06&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP07&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP07&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP07&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP07&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP08&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP08&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP08&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 4, &#39;source&#39;: &#39;AP08&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP09&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP09&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP09&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP09&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP10&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP10&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP10&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP10&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP11&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP11&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP11&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP11&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP12&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP12&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP12&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP12&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP13&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP13&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP13&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP13&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP14&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP14&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP15&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP15&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP15&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP15&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP16&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP16&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP16&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP16&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP17&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP17&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP17&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP17&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP18&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP18&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP18&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP18&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP19&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP19&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP19&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP19&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP20&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP20&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP20&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP20&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP21&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP21&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP21&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP21&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP22&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP22&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP22&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP22&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP23&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP23&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP23&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP23&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP24&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP24&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP24&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP24&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP25&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP25&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP25&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP26&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP26&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP26&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP26&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP27&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP27&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP27&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP27&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP28&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP28&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP28&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP29&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 4, &#39;source&#39;: &#39;AP29&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP29&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP29&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP30&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP30&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP30&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP30&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP31&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP31&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP31&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP31&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP32&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP32&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP32&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP32&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP33&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP33&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP33&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP33&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP34&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP34&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP34&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP34&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP35&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP35&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP35&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP35&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP36&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP36&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP36&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP36&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP37&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP37&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP37&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP37&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP38&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP38&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP38&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP38&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP39&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP39&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP39&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP39&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP40A&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP40A&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP40A&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP40A&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP40B&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP40B&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP40B&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP40B&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP41&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP41&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP41&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP41&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP42&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP42&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP42&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP42&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP43&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP43&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP43&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP43&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP44&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP44&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP44&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP44&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP45&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP45&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP45&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP45&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP46&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP46&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP46&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP46&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP47&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP47&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP47&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP47&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP48&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP48&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP48&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP48&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP49&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP49&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP49&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP49&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP50&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP50&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP50&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP50&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP51&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP51&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP51&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP51&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP52&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP52&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP52&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP52&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP53&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP53&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP53&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP53&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP54&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP54&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP54&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP54&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP55&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP55&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP55&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP55&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP56&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP56&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP56&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP56&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP57&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP57&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP57&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP57&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP58&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP58&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP58&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP58&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP59&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP59&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP59&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP59&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP60&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP60&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP60&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP60&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP61&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP61&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP61&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP61&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP62&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP62&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP62&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP62&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP63&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP63&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP63&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP63&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP64&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP64&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP64&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP64&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP65&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP65&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP65&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP65&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP66&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP66&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP66&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP66&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP67&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP67&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP67&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP67&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP68&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP68&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP68&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP68&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP69&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP69&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP70&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP70&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP70&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP70&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP71&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP71&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP71&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP71&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP72&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP72&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP72&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP72&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP73&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP73&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3, &#39;source&#39;: &#39;AP73&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP73&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP74&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP74&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP74&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP74&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP75&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP75&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP76&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP76&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP76&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP76&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP77&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2, &#39;source&#39;: &#39;AP77&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP77&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP77&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP78&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP78&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP79&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP79&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP79&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP79&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP80&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP80&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP80&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP80&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP81&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP81&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP81&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP82&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP82&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP82&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP82&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP83&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP83&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP83&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP83&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP84&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP84&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP85&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP85&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP85&#39;, &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP85&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP86&#39;, &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP86&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP86&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP87&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP87&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP88&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP88&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1, &#39;source&#39;: &#39;AP89&#39;, &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0, &#39;source&#39;: &#39;AP89&#39;, &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 2,
+     &#39;source&#39;: &#39;tre_00:14:5a:01:86:59&#39;,
+     &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 3,
+     &#39;source&#39;: &#39;tre_00:14:5a:01:86:59&#39;,
+     &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:a9&#39;,
+     &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:a9&#39;,
+     &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:b7&#39;,
+     &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:b7&#39;,
+     &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:ec&#39;,
+     &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:ee&#39;,
+     &#39;target&#39;: &#39;107_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:33:ee&#39;,
+     &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:35:b1&#39;,
+     &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:35:b1&#39;,
+     &#39;target&#39;: &#39;214_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:35:b1&#39;,
+     &#39;target&#39;: &#39;214_RED&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 1,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:36:48&#39;,
+     &#39;target&#39;: &#39;107_BLUE&#39;}},
+   {&#39;data&#39;: {&#39;weight&#39;: 0,
+     &#39;source&#39;: &#39;tre_00:14:5a:02:36:48&#39;,
+     &#39;target&#39;: &#39;214_BLUE&#39;}}]}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bp_graph</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span>
+    <span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;tre_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;train_obm&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;packet_loss_cnt&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">bp_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()],</span> 
+    <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">bipartite_layout</span><span class="p">(</span><span class="n">bp_graph</span><span class="p">,</span><span class="n">bp_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dash-application">
+<h2><span class="section-number">3.25. </span>Dash application<a class="headerlink" href="#dash-application" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dash</span> <span class="kn">import</span> <span class="n">Dash</span><span class="p">,</span> <span class="n">html</span>
+<span class="kn">import</span> <span class="nn">dash_cytoscape</span> <span class="k">as</span> <span class="nn">cyto</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">nx_to_cyto</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">cytoscape_data</span><span class="p">(</span><span class="n">bp_graph</span><span class="p">)</span>  
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nx_to_cyto</span><span class="p">[</span><span class="s2">&quot;elements&quot;</span><span class="p">][</span><span class="s2">&quot;nodes&quot;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">v</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+    <span class="n">n</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">900</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">v</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bipartite&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">500</span><span class="p">}</span>
+    
+<span class="n">nodes_edges</span> <span class="o">=</span> <span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">nodes_edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;edges&#39;</span><span class="p">])</span>
+
+
+<span class="n">default_stylesheet</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.65</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;edge&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;curve-style&quot;</span><span class="p">:</span> <span class="s2">&quot;bezier&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.65</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span>
+    <span class="n">cyto</span><span class="o">.</span><span class="n">Cytoscape</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;cytoscape-two-nodes&#39;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;preset&#39;</span><span class="p">},</span>
+        <span class="n">elements</span><span class="o">=</span><span class="n">nodes_edges</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;100vh&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;padding&#39;</span> <span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;margin&#39;</span> <span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span>
+        <span class="p">},</span>
+        <span class="n">minZoom</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">maxZoom</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dash is running on http://127.0.0.1:8050/
+
+ * Serving Flask app &#39;__main__&#39;
+ * Debug mode: off
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Red">WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.</span>
+ * Running on http://127.0.0.1:8050
+<span class=" -Color -Color-Yellow">Press CTRL+C to quit</span>
+127.0.0.1 - - [14/May/2023 19:12:03] &quot;GET / HTTP/1.1&quot; 200 -
+127.0.0.1 - - [14/May/2023 19:12:03] &quot;GET /_dash-layout HTTP/1.1&quot; 200 -
+127.0.0.1 - - [14/May/2023 19:12:03] &quot;GET /_dash-dependencies HTTP/1.1&quot; 200 -
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a big bipartite graph and create a folded projection of it</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a big bipartite graph and create a folded projection of it</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">bipartite</span>
+
+<span class="c1"># Create a bipartite graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">nodes_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">nodes_2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes_1</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes_2</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">)]</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+
+<span class="c1"># Create a folded projection of the bipartite graph</span>
+<span class="n">top_nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;bipartite&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">folded_projection</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">top_nodes</span><span class="p">,</span> <span class="n">multigraph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="c1"># Display the folded projection</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">nx_to_cyto</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">cytoscape_data</span><span class="p">(</span><span class="n">folded_projection</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nx_to_cyto</span><span class="p">[</span><span class="s2">&quot;elements&quot;</span><span class="p">][</span><span class="s2">&quot;nodes&quot;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">v</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+    <span class="n">n</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">900</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bipartite&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">500</span><span class="p">}</span>
+
+<span class="n">nodes_edges</span> <span class="o">=</span> <span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">nodes_edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;edges&#39;</span><span class="p">])</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+    <span class="n">cyto</span><span class="o">.</span><span class="n">Cytoscape</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;cytoscape-two-nodes&#39;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;preset&#39;</span><span class="p">},</span>
+        <span class="n">elements</span><span class="o">=</span><span class="n">nodes_edges</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;100vh&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;margin&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span>
+        <span class="p">},</span>
+        <span class="n">minZoom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">maxZoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">126</span><span class="p">],</span> <span class="n">line</span> <span class="mi">101</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">nodes_edges</span> <span class="o">=</span> <span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">nodes_edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">nx_to_cyto</span><span class="p">[</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="s1">&#39;edges&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">className</span><span class="o">=</span><span class="s1">&#39;eight columns&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>         <span class="n">cyto</span><span class="o">.</span><span class="n">Cytoscape</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>             <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;cytoscape-two-nodes&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;preset&#39;</span><span class="p">},</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>         <span class="n">elements</span><span class="o">=</span><span class="n">nodes_edges</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>             <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;100vh&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>             <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>             <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>             <span class="s1">&#39;margin&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="p">},</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>         <span class="n">minZoom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>         <span class="n">maxZoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="p">]),</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">className</span><span class="o">=</span><span class="s1">&#39;four columns&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">dcc</span><span class="o">.</span><span class="n">Tabs</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tabs&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>             <span class="n">dcc</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Control Panel&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>                 <span class="n">NamedDropdown</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Layout&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>                     <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dropdown-layout&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>                     <span class="n">options</span><span class="o">=</span><span class="n">DropdownOptionsList</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>                         <span class="s1">&#39;random&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>                         <span class="s1">&#39;grid&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>                         <span class="s1">&#39;circle&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>                         <span class="s1">&#39;concentric&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>                         <span class="s1">&#39;breadthfirst&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>                         <span class="s1">&#39;cose&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>                     <span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>                     <span class="n">value</span><span class="o">=</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>                     <span class="n">clearable</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>                 <span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span> 
+<span class="g g-Whitespace">     </span><span class="mi">66</span>                 <span class="n">NamedDropdown</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Node Shape&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>                     <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dropdown-node-shape&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>                     <span class="n">value</span><span class="o">=</span><span class="s1">&#39;ellipse&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>                     <span class="n">clearable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                     <span class="n">options</span><span class="o">=</span><span class="n">DropdownOptionsList</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                         <span class="s1">&#39;ellipse&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>                         <span class="s1">&#39;triangle&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>                         <span class="s1">&#39;rectangle&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>                         <span class="s1">&#39;diamond&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>                         <span class="s1">&#39;pentagon&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span>                         <span class="s1">&#39;hexagon&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>                         <span class="s1">&#39;heptagon&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>                         <span class="s1">&#39;octagon&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>                         <span class="s1">&#39;star&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span>                         <span class="s1">&#39;polygon&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>                     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>                 <span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span> 
+<span class="g g-Whitespace">     </span><span class="mi">85</span>                 <span class="n">NamedInput</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Followers Color&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>                     <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;input-follower-color&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>                     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>                     <span class="n">value</span><span class="o">=</span><span class="s1">&#39;#0074D9&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>                 <span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span> 
+<span class="g g-Whitespace">     </span><span class="mi">92</span>                 <span class="n">NamedInput</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Following Color&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>                     <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;input-following-color&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>                     <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>                     <span class="n">value</span><span class="o">=</span><span class="s1">&#39;#FF4136&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>                 <span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>             <span class="p">]),</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span> 
+<span class="g g-Whitespace">    </span><span class="mi">100</span>             <span class="n">dcc</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;JSON&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="ne">--&gt; </span><span class="mi">101</span>                 <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;tab&#39;</span><span class="p">],</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>                     <span class="n">html</span><span class="o">.</span><span class="n">P</span><span class="p">(</span><span class="s1">&#39;Node Object JSON:&#39;</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>                     <span class="n">html</span><span class="o">.</span><span class="n">Pre</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>                         <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tap-node-json-output&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>                         <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;json-output&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>                     <span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                     <span class="n">html</span><span class="o">.</span><span class="n">P</span><span class="p">(</span><span class="s1">&#39;Edge Object JSON:&#39;</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>                     <span class="n">html</span><span class="o">.</span><span class="n">Pre</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>                         <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tap-edge-json-output&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>                         <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;json-output&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>                     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>                 <span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>             <span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="p">]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;tab&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">folded_projection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7b25e5ce51af12115812dd7935c46ba5ed9e14d834c3cdbaa6017a783dac65df.png" src="../../_images/7b25e5ce51af12115812dd7935c46ba5ed9e14d834c3cdbaa6017a783dac65df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folded_projection</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EdgeView([(1, 3), (1, 4), (2, 4), (2, 5), (3, 4), (4, 5)])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">from</span> <span class="nn">dash.dependencies</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span>
+<span class="kn">import</span> <span class="nn">dash_core_components</span> <span class="k">as</span> <span class="nn">dcc</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+
+<span class="kn">import</span> <span class="nn">dash_cytoscape</span> <span class="k">as</span> <span class="nn">cyto</span>
+<span class="kn">from</span> <span class="nn">demos</span> <span class="kn">import</span> <span class="n">dash_reusable_components</span> <span class="k">as</span> <span class="n">drc</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+
+<span class="c1"># ###################### DATA PREPROCESSING ######################</span>
+<span class="c1"># Load data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;demos/data/sample_network.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">network_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># We select the first 750 edges and associated nodes for an easier visualization</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">network_data</span><span class="p">[:</span><span class="mi">750</span><span class="p">]</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="n">cy_edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">cy_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">network_edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+    <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">network_edge</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">cy_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;User #&quot;</span> <span class="o">+</span> <span class="n">source</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]}})</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">cy_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;User #&quot;</span> <span class="o">+</span> <span class="n">target</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]}})</span>
+
+    <span class="n">cy_edges</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span>
+            <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">target</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+
+
+<span class="n">styles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;json-output&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;overflow-y&#39;</span><span class="p">:</span> <span class="s1">&#39;scroll&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;calc(50% - 25px)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;thin lightgrey solid&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;tab&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;calc(98vh - 105px)&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">className</span><span class="o">=</span><span class="s1">&#39;eight columns&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">cyto</span><span class="o">.</span><span class="n">Cytoscape</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span>
+            <span class="n">elements</span><span class="o">=</span><span class="n">cy_edges</span> <span class="o">+</span> <span class="n">cy_nodes</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="s1">&#39;95vh&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">]),</span>
+
+    <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">className</span><span class="o">=</span><span class="s1">&#39;four columns&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">dcc</span><span class="o">.</span><span class="n">Tabs</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tabs&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">dcc</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Control Panel&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">drc</span><span class="o">.</span><span class="n">NamedDropdown</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Layout&#39;</span><span class="p">,</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dropdown-layout&#39;</span><span class="p">,</span>
+                    <span class="n">options</span><span class="o">=</span><span class="n">drc</span><span class="o">.</span><span class="n">DropdownOptionsList</span><span class="p">(</span>
+                        <span class="s1">&#39;random&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;grid&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;circle&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;concentric&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;breadthfirst&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;cose&#39;</span>
+                    <span class="p">),</span>
+                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span>
+                    <span class="n">clearable</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">),</span>
+
+                <span class="n">drc</span><span class="o">.</span><span class="n">NamedDropdown</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Node Shape&#39;</span><span class="p">,</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dropdown-node-shape&#39;</span><span class="p">,</span>
+                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;ellipse&#39;</span><span class="p">,</span>
+                    <span class="n">clearable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">options</span><span class="o">=</span><span class="n">drc</span><span class="o">.</span><span class="n">DropdownOptionsList</span><span class="p">(</span>
+                        <span class="s1">&#39;ellipse&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;triangle&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;rectangle&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;diamond&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;pentagon&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;hexagon&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;heptagon&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;octagon&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;star&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;polygon&#39;</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+
+                <span class="n">drc</span><span class="o">.</span><span class="n">NamedInput</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Followers Color&#39;</span><span class="p">,</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;input-follower-color&#39;</span><span class="p">,</span>
+                    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;#0074D9&#39;</span><span class="p">,</span>
+                <span class="p">),</span>
+
+                <span class="n">drc</span><span class="o">.</span><span class="n">NamedInput</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Following Color&#39;</span><span class="p">,</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;input-following-color&#39;</span><span class="p">,</span>
+                    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;#FF4136&#39;</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">]),</span>
+
+            <span class="n">dcc</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;JSON&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;tab&#39;</span><span class="p">],</span> <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">P</span><span class="p">(</span><span class="s1">&#39;Node Object JSON:&#39;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Pre</span><span class="p">(</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tap-node-json-output&#39;</span><span class="p">,</span>
+                        <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;json-output&#39;</span><span class="p">]</span>
+                    <span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">P</span><span class="p">(</span><span class="s1">&#39;Edge Object JSON:&#39;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Pre</span><span class="p">(</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;tap-edge-json-output&#39;</span><span class="p">,</span>
+                        <span class="n">style</span><span class="o">=</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;json-output&#39;</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="p">])</span>
+            <span class="p">])</span>
+        <span class="p">]),</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s1">&#39;tap-node-json-output&#39;</span><span class="p">,</span> <span class="s1">&#39;children&#39;</span><span class="p">),</span>
+              <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span> <span class="s1">&#39;tapNode&#39;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">display_tap_node</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s1">&#39;tap-edge-json-output&#39;</span><span class="p">,</span> <span class="s1">&#39;children&#39;</span><span class="p">),</span>
+              <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span> <span class="s1">&#39;tapEdge&#39;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">display_tap_edge</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span> <span class="s1">&#39;layout&#39;</span><span class="p">),</span>
+              <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;dropdown-layout&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">update_cytoscape_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">layout</span><span class="p">}</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span> <span class="s1">&#39;stylesheet&#39;</span><span class="p">),</span>
+              <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;cytoscape&#39;</span><span class="p">,</span> <span class="s1">&#39;tapNode&#39;</span><span class="p">),</span>
+               <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;input-follower-color&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+               <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;input-following-color&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+               <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;dropdown-node-shape&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">generate_stylesheet</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">follower_color</span><span class="p">,</span> <span class="n">following_color</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default_stylesheet</span>
+
+    <span class="n">stylesheet</span> <span class="o">=</span> <span class="p">[{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+            <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="n">node_shape</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;edge&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+            <span class="s2">&quot;curve-style&quot;</span><span class="p">:</span> <span class="s2">&quot;bezier&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;node[id = &quot;</span><span class="si">{}</span><span class="s1">&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]),</span>
+        <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;#B10DC9&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;border-color&quot;</span><span class="p">:</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;border-width&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;border-opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;data(label)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#B10DC9&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text-opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;font-size&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+            <span class="s1">&#39;z-index&#39;</span><span class="p">:</span> <span class="mi">9999</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;edgesData&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">edge</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]:</span>
+            <span class="n">stylesheet</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;node[id = &quot;</span><span class="si">{}</span><span class="s1">&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]),</span>
+                <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="n">following_color</span><span class="p">,</span>
+                    <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.9</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+            <span class="n">stylesheet</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;edge[id= &quot;</span><span class="si">{}</span><span class="s1">&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]),</span>
+                <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;mid-target-arrow-color&quot;</span><span class="p">:</span> <span class="n">following_color</span><span class="p">,</span>
+                    <span class="s2">&quot;mid-target-arrow-shape&quot;</span><span class="p">:</span> <span class="s2">&quot;vee&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="n">following_color</span><span class="p">,</span>
+                    <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+                    <span class="s1">&#39;z-index&#39;</span><span class="p">:</span> <span class="mi">5000</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+
+        <span class="k">if</span> <span class="n">edge</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]:</span>
+            <span class="n">stylesheet</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;node[id = &quot;</span><span class="si">{}</span><span class="s1">&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]),</span>
+                <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="n">follower_color</span><span class="p">,</span>
+                    <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+                    <span class="s1">&#39;z-index&#39;</span><span class="p">:</span> <span class="mi">9999</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+            <span class="n">stylesheet</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;selector&quot;</span><span class="p">:</span> <span class="s1">&#39;edge[id= &quot;</span><span class="si">{}</span><span class="s1">&quot;]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]),</span>
+                <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;mid-target-arrow-color&quot;</span><span class="p">:</span> <span class="n">follower_color</span><span class="p">,</span>
+                    <span class="s2">&quot;mid-target-arrow-shape&quot;</span><span class="p">:</span> <span class="s2">&quot;vee&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="n">follower_color</span><span class="p">,</span>
+                    <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;z-index&#39;</span><span class="p">:</span> <span class="mi">5000</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">stylesheet</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">48</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">dash_cytoscape</span> <span class="k">as</span> <span class="nn">cyto</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">demos</span> <span class="kn">import</span> <span class="n">dash_reusable_components</span> <span class="k">as</span> <span class="n">drc</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;demos&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1654,6 +3037,8 @@ Eulerian path: [(1, 4), (4, 3), (3, 2), (2, 1)]
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#betweeness-centrality">3.23.3. Betweeness centrality</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">3.24. Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dash-application">3.25. Dash application</a></li>
 </ul>
   </nav></div>
 

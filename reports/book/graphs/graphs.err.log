@@ -15,54 +15,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# import libraries
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from graspologic.plot import heatmap
-from graspologic.partition import leiden
-from graspologic.plot import networkplot
-from graspologic.utils import is_fully_connected
-from graspologic.datasets import load_drosophila_left
-from graspologic.utils import binarize
-
-# import network and graph libraries
-import networkx as nx
-
-# Set display params
-plt.rcParams["figure.figsize"] = (14,6)
-plt.rcParams["figure.max_open_warning"] = 200
-# General plot parameters
-plt.rcParams['font.family'] = 'sans-serif'
-plt.rcParams['font.size'] = 15
-plt.rcParams['axes.linewidth'] = 2
-plt.rcParams['axes.autolimit_mode'] = 'data'
-plt.rcParams['xtick.major.size'] = 8
-plt.rcParams['xtick.major.width'] = 2
-plt.rcParams['xtick.direction'] = 'in'
-plt.rcParams['ytick.major.size'] = 8
-plt.rcParams['ytick.major.width'] = 2
-plt.rcParams['ytick.direction'] = 'in'
-plt.rcParams['axes.grid'] = True
-plt.rcParams['grid.linestyle'] = 'dashed'
-plt.rcParams['grid.alpha'] = 0.5
-plt.rcParams['axes.xmargin'] = 0.1
-plt.rcParams['axes.grid'] = False
-plt.rcParams['axes.spines.left'] = False
-plt.rcParams['axes.spines.right'] = False
-plt.rcParams['axes.spines.top'] = False
-plt.rcParams['axes.spines.bottom'] = False
+import pandas as pd
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 4[0m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[0;32m----> 4[0m [38;5;28;01mimport[39;00m [38;5;21;01mseaborn[39;00m [38;5;28;01mas[39;00m [38;5;21;01msns[39;00m
-[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgraspologic[39;00m[38;5;21;01m.[39;00m[38;5;21;01mplot[39;00m [38;5;28;01mimport[39;00m heatmap
-[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgraspologic[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpartition[39;00m [38;5;28;01mimport[39;00m leiden
+Cell [0;32mIn[1], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
 
-[0;31mModuleNotFoundError[0m: No module named 'seaborn'
+[0;31mModuleNotFoundError[0m: No module named 'pandas'
 
