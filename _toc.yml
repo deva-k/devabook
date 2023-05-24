@@ -22,7 +22,8 @@ parts:
   - caption: Graphs
     numbered: true
     chapters:
-      - file: book/graphs/graphs
+      - file: book/graphs/graphs1
+      - file: book/graphs/graphs2
   - caption: Deep Learning
     numbered: true
     chapters:
