@@ -20,7 +20,7 @@ parts:
     chapters:
       - file: book/timeseries/ts
   - caption: Graphs
-    numbered: true
+    # numbered: true
     chapters:
       - file: book/graphs/graphs1
       - file: book/graphs/graphs2
