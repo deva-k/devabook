@@ -24,4 +24,3 @@ parts:
   - caption: Deep Learning
     chapters:
       - file: book/deep_learning/linear_algebra
-  - file: generate_index.md
