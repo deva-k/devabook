@@ -12,22 +12,15 @@ root: index
 
 parts:
   - caption: Machine Learning
-    numbered: true
     chapters:
       - file: book/machine_learning/ml
   - caption: Time series
-    numbered: true
     chapters:
       - file: book/timeseries/ts
   - caption: Graphs
-    # numbered: true
     chapters:
       - file: book/graphs/graphs1
       - file: book/graphs/graphs2
   - caption: Deep Learning
-    numbered: true
     chapters:
       - file: book/deep_learning/linear_algebra
-  - caption: Appendices
-    chapters:
-      - file: book/bibliography
