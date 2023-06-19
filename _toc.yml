@@ -21,6 +21,9 @@ parts:
     chapters:
       - file: book/graphs/graphs1
       - file: book/graphs/graphs2
+  - caption: Natural Language Processing
+    chapters:
+      - file: book/natural_language_processing/nlp1
   - caption: Deep Learning
     chapters:
       - file: book/deep_learning/linear_algebra
