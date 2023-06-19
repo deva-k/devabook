@@ -4,3 +4,4 @@ matplotlib
 numpy
 ghp-import
 networkx
+nltk==3.8.1
